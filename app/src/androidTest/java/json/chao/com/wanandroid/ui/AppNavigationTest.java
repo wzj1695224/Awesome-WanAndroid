@@ -1,5 +1,10 @@
 package json.chao.com.wanandroid.ui;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+
 import android.support.annotation.IdRes;
 import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.IdlingResource;
@@ -24,16 +29,8 @@ import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.ui.main.activity.MainActivity;
 import json.chao.com.wanandroid.uitls.TestUtils;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 
-/**
- * @author quchao
- * @date 2018/6/15
- */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class AppNavigationTest extends BasePageTest {

@@ -6,10 +6,7 @@ import json.chao.com.wanandroid.base.presenter.AbstractPresenter;
 import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.bean.hierarchy.KnowledgeHierarchyData;
 
-/**
- * @author quchao
- * @date 2017/12/7
- */
+
 
 public interface KnowledgeHierarchyContract {
 

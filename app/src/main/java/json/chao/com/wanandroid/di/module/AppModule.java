@@ -1,6 +1,5 @@
 package json.chao.com.wanandroid.di.module;
 
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -14,10 +13,7 @@ import json.chao.com.wanandroid.core.http.HttpHelperImpl;
 import json.chao.com.wanandroid.core.prefs.PreferenceHelper;
 import json.chao.com.wanandroid.core.prefs.PreferenceHelperImpl;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
+
 
 @Module
 public class AppModule {

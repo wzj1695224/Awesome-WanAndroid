@@ -9,10 +9,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import json.chao.com.wanandroid.R;
 
-/**
- * @author quchao
- * @date 2018/3/23
- */
 
 public class SearchHistoryViewHolder extends BaseViewHolder {
 

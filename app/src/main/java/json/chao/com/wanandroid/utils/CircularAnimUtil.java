@@ -1,8 +1,5 @@
 package json.chao.com.wanandroid.utils;
 
-/**
- * Created by codeest on 2016/7/25.
- */
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
@@ -14,6 +11,7 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+
 /**
  * 对 ViewAnimationUtils.createCircularReveal() 方法的封装.
  * <p/>
@@ -22,7 +20,6 @@ import android.widget.ImageView;
  *
  * @author ice
  */
-
 public class CircularAnimUtil {
 
     public static final long PERFECT_MILLS = 618;

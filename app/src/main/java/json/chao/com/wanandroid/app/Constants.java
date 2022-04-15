@@ -1,16 +1,11 @@
 package json.chao.com.wanandroid.app;
 
-
 import android.graphics.Color;
 
 import java.io.File;
 
 import json.chao.com.wanandroid.R;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
 
 public class Constants {
 

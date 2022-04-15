@@ -1,13 +1,9 @@
 package json.chao.com.wanandroid.contract.main;
 
 import json.chao.com.wanandroid.base.presenter.AbstractPresenter;
-import json.chao.com.wanandroid.core.bean.main.login.LoginData;
 import json.chao.com.wanandroid.base.view.AbstractView;
 
-/**
- * @author quchao
- * @date 2018/2/26
- */
+
 
 public interface LoginContract {
 

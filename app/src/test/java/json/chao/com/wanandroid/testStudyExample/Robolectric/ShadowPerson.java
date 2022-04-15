@@ -5,10 +5,7 @@ import org.robolectric.annotation.Implements;
 
 import json.chao.com.wanandroid.test.Person;
 
-/**
- * @author quchao
- * @date 2018/6/6
- */
+
 
 @Implements(Person.class)
 public class ShadowPerson {

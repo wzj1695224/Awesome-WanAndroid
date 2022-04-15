@@ -13,12 +13,7 @@ import json.chao.com.wanandroid.BasePresenterTest;
 import json.chao.com.wanandroid.BuildConfig;
 import json.chao.com.wanandroid.contract.hierarchy.KnowledgeHierarchyContract;
 
-import static org.junit.Assert.*;
 
-/**
- * @author quchao
- * @date 2018/6/12
- */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class KnowledgeHierarchyPresenterTest extends BasePresenterTest {

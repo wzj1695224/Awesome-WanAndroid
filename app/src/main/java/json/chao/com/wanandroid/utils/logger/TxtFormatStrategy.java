@@ -1,5 +1,12 @@
 package json.chao.com.wanandroid.utils.logger;
 
+import static com.orhanobut.logger.Logger.ASSERT;
+import static com.orhanobut.logger.Logger.DEBUG;
+import static com.orhanobut.logger.Logger.ERROR;
+import static com.orhanobut.logger.Logger.INFO;
+import static com.orhanobut.logger.Logger.VERBOSE;
+import static com.orhanobut.logger.Logger.WARN;
+
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -15,20 +22,12 @@ import java.util.Locale;
 
 import json.chao.com.wanandroid.utils.CommonUtils;
 
-import static com.orhanobut.logger.Logger.ASSERT;
-import static com.orhanobut.logger.Logger.DEBUG;
-import static com.orhanobut.logger.Logger.ERROR;
-import static com.orhanobut.logger.Logger.INFO;
-import static com.orhanobut.logger.Logger.VERBOSE;
-import static com.orhanobut.logger.Logger.WARN;
 
 /**
  * CSV formatted file logging for Android.
  * Writes to CSV the following data:
  * epoch timestamp, ISO8601 timestamp (human-readable), log level, tag, log message.
- * @author quchao
  */
-
 public class TxtFormatStrategy implements FormatStrategy {
 
   private static final String NEW_LINE = System.getProperty("line.separator");

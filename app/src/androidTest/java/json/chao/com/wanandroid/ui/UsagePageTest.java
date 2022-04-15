@@ -1,6 +1,5 @@
 package json.chao.com.wanandroid.ui;
 
-import android.support.annotation.IdRes;
 import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.IdlingResource;
 import android.support.test.filters.LargeTest;
@@ -17,18 +16,8 @@ import json.chao.com.wanandroid.BasePageTest;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.ui.main.activity.MainActivity;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 
-/**
- * @author quchao
- * @date 2018/6/19
- */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class UsagePageTest extends BasePageTest {

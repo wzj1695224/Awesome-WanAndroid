@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
-import json.chao.com.wanandroid.core.bean.navigation.NavigationListData;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.Constants;
+import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
 import json.chao.com.wanandroid.contract.navigation.NavigationContract;
+import json.chao.com.wanandroid.core.bean.navigation.NavigationListData;
 import json.chao.com.wanandroid.presenter.navigation.NavigationPresenter;
 import json.chao.com.wanandroid.ui.navigation.adapter.NavigationAdapter;
 import json.chao.com.wanandroid.utils.CommonUtils;
@@ -25,10 +25,6 @@ import q.rorbin.verticaltablayout.widget.ITabView;
 import q.rorbin.verticaltablayout.widget.TabView;
 
 
-/**
- * @author quchao
- * @date 2018/2/11
- */
 
 public class NavigationFragment extends BaseRootFragment<NavigationPresenter> implements NavigationContract.View {
 

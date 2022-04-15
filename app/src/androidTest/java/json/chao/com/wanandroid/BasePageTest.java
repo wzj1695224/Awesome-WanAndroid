@@ -1,10 +1,5 @@
 package json.chao.com.wanandroid;
 
-import android.support.annotation.IdRes;
-import android.support.test.espresso.matcher.ViewMatchers;
-
-import json.chao.com.wanandroid.uitls.TestUtils;
-
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeDown;
@@ -12,18 +7,17 @@ import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
-import static android.support.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE;
 import static android.support.test.espresso.matcher.ViewMatchers.hasFocus;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
-/**
- * @author quchao
- * @date 2018/6/22
- */
+import android.support.annotation.IdRes;
+
+import json.chao.com.wanandroid.uitls.TestUtils;
+
+
 public class BasePageTest {
 
     protected static final long DELAY_TIME = 1500;

@@ -6,10 +6,7 @@ import json.chao.com.wanandroid.di.component.BaseDialogFragmentComponent;
 import json.chao.com.wanandroid.ui.main.fragment.SearchDialogFragment;
 import json.chao.com.wanandroid.ui.main.fragment.UsageDialogFragment;
 
-/**
- * @author quchao
- * @date 2018/5/4
- */
+
 
 @Module(subcomponents = BaseDialogFragmentComponent.class)
 public abstract class AbstractAllDialogFragmentModule {

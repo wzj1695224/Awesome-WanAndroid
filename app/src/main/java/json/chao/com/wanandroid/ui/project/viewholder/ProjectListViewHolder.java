@@ -10,10 +10,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import json.chao.com.wanandroid.R;
 
-/**
- * @author quchao
- * @date 2018/2/24
- */
 
 public class ProjectListViewHolder extends BaseViewHolder{
 

@@ -10,12 +10,12 @@ import android.view.View;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import butterknife.BindView;
-import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
-import json.chao.com.wanandroid.component.RxBus;
-import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.Constants;
+import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
+import json.chao.com.wanandroid.component.RxBus;
 import json.chao.com.wanandroid.contract.hierarchy.KnowledgeHierarchyListContract;
+import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.event.CollectEvent;
 import json.chao.com.wanandroid.core.event.SwitchNavigationEvent;
@@ -26,10 +26,7 @@ import json.chao.com.wanandroid.ui.mainpager.adapter.ArticleListAdapter;
 import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 
-/**
- * @author quchao
- * @date 2018/2/23
- */
+
 public class KnowledgeHierarchyListFragment extends BaseRootFragment<KnowledgeHierarchyListPresenter>
         implements KnowledgeHierarchyListContract.View {
 

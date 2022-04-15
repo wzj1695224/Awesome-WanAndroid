@@ -3,7 +3,6 @@ package json.chao.com.wanandroid.ui.main.activity;
 import android.animation.ValueAnimator;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -26,16 +25,11 @@ import com.scwang.smartrefresh.layout.listener.SimpleMultiPurposeListener;
 import com.scwang.smartrefresh.layout.util.DensityUtil;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.base.activity.AbstractSimpleActivity;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 import json.chao.com.wanandroid.widget.interpolator.ElasticOutInterpolator;
 
-/**
- * @author quchao
- * @date 2018/2/28
- */
 
 public class AboutUsActivity extends AbstractSimpleActivity {
 

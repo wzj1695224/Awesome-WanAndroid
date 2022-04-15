@@ -1,9 +1,6 @@
 package json.chao.com.wanandroid.core.prefs;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
+
 
 public interface PreferenceHelper {
 

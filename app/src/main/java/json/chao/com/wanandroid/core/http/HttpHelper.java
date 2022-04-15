@@ -16,10 +16,7 @@ import json.chao.com.wanandroid.core.bean.project.ProjectListData;
 import json.chao.com.wanandroid.core.bean.wx.WxAuthor;
 import retrofit2.http.GET;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
+
 
 public interface HttpHelper {
 

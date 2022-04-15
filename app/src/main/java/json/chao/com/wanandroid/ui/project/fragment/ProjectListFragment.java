@@ -14,22 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import json.chao.com.wanandroid.R;
+import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
+import json.chao.com.wanandroid.contract.project.ProjectListContract;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.bean.project.ProjectListData;
-import json.chao.com.wanandroid.R;
-import json.chao.com.wanandroid.app.Constants;
-import json.chao.com.wanandroid.contract.project.ProjectListContract;
 import json.chao.com.wanandroid.presenter.project.ProjectListPresenter;
 import json.chao.com.wanandroid.ui.project.adapter.ProjectListAdapter;
 import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 
-/**
- * @author quchao
- * @date 2018/2/24
- */
+
 public class ProjectListFragment extends BaseRootFragment<ProjectListPresenter> implements ProjectListContract.View {
 
     @BindView(R.id.normal_view)

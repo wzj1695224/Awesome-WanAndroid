@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
-import json.chao.com.wanandroid.component.RxBus;
-import json.chao.com.wanandroid.core.bean.main.banner.BannerData;
-import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.Constants;
+import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
+import json.chao.com.wanandroid.component.RxBus;
 import json.chao.com.wanandroid.contract.mainpager.MainPagerContract;
+import json.chao.com.wanandroid.core.bean.main.banner.BannerData;
+import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.event.AutoLoginEvent;
 import json.chao.com.wanandroid.core.event.LoginEvent;
@@ -40,10 +40,7 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.GlideImageLoader;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 
-/**
- * @author quchao
- * @date 2017/11/29
- */
+
 public class MainPagerFragment extends BaseRootFragment<MainPagerPresenter>
         implements MainPagerContract.View {
 

@@ -6,10 +6,6 @@ import json.chao.com.wanandroid.base.presenter.BasePresenter;
 import json.chao.com.wanandroid.contract.main.SettingContract;
 import json.chao.com.wanandroid.core.DataManager;
 
-/**
- * @author quchao
- * @date 2018/4/2
- */
 
 public class SettingPresenter extends BasePresenter<SettingContract.View> implements SettingContract.Presenter {
 

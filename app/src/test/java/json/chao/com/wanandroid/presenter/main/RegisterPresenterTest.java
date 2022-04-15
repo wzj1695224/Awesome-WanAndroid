@@ -11,14 +11,10 @@ import org.robolectric.annotation.Config;
 import json.chao.com.wanandroid.BasePresenterTest;
 import json.chao.com.wanandroid.BuildConfig;
 import json.chao.com.wanandroid.R;
-import json.chao.com.wanandroid.app.WanAndroidApp;
 import json.chao.com.wanandroid.contract.main.RegisterContract;
 
 
-/**
- * @author quchao
- * @date 2018/6/11
- */
+
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class RegisterPresenterTest extends BasePresenterTest {

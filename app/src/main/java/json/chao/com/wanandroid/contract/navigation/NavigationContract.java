@@ -2,14 +2,11 @@ package json.chao.com.wanandroid.contract.navigation;
 
 import java.util.List;
 
-import json.chao.com.wanandroid.core.bean.navigation.NavigationListData;
 import json.chao.com.wanandroid.base.presenter.AbstractPresenter;
 import json.chao.com.wanandroid.base.view.AbstractView;
+import json.chao.com.wanandroid.core.bean.navigation.NavigationListData;
 
-/**
- * @author quchao
- * @date 2018/2/11
- */
+
 
 public interface NavigationContract {
 

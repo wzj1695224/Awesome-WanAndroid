@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.functions.Consumer;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.WanAndroidApp;
 import json.chao.com.wanandroid.base.presenter.BasePresenter;
@@ -15,10 +14,6 @@ import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
 
-/**
- * @author quchao
- * @date 2018/10/31
- */
 public class WxArticlePresenter extends BasePresenter<WxContract.View> implements WxContract.Presenter {
 
     private DataManager mDataManager;

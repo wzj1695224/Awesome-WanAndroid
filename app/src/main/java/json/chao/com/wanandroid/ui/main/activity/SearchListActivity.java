@@ -36,10 +36,6 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 
-/**
- * @author quchao
- * @date 2018/3/13
- */
 
 public class SearchListActivity extends BaseRootActivity<SearchListPresenter> implements SearchListContract.View {
 

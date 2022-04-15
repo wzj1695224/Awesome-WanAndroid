@@ -1,5 +1,7 @@
 package json.chao.com.wanandroid.testStudyExample.PowerMockTestExample;
 
+import static org.mockito.internal.verification.VerificationModeFactory.times;
+
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,12 +12,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.powermock.reflect.Whitebox;
 
-import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-/**
- * @author quchao
- * @date 2018/6/5
- */
 
 //@RunWith(PowerMockRunner.class)
 @PrepareForTest({Banana.class})

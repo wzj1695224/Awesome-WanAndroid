@@ -31,10 +31,6 @@ import json.chao.com.wanandroid.presenter.main.ArticleDetailPresenter;
 import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 
-/**
- * @author quchao
- * @date 2018/2/13
- */
 public class ArticleDetailActivity extends BaseActivity<ArticleDetailPresenter> implements ArticleDetailContract.View {
 
     @BindView(R.id.article_detail_toolbar)

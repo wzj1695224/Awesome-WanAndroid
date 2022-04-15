@@ -51,10 +51,6 @@ import json.chao.com.wanandroid.utils.KeyBoardUtils;
 import json.chao.com.wanandroid.widget.CircularRevealAnim;
 
 
-/**
- * @author quchao
- * @date 2018/3/1
- */
 
 public class SearchDialogFragment extends BaseDialogFragment<SearchPresenter> implements
         SearchContract.View,

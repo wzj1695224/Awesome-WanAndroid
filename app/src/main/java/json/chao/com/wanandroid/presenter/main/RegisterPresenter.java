@@ -10,14 +10,10 @@ import json.chao.com.wanandroid.base.presenter.BasePresenter;
 import json.chao.com.wanandroid.contract.main.RegisterContract;
 import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.core.bean.main.login.LoginData;
-import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
-/**
- * @author quchao
- * @date 2018/5/4
- */
+
 public class RegisterPresenter extends BasePresenter<RegisterContract.View> implements RegisterContract.Presenter {
 
     private DataManager mDataManager;

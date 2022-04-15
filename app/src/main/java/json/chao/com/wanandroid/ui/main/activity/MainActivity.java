@@ -3,9 +3,7 @@ package json.chao.com.wanandroid.ui.main.activity;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
-import android.net.TrafficStats;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -25,9 +23,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.facebook.device.yearclass.YearClass;
-
-import org.jay.launchstarter.TaskDispatcher;
-import org.jay.launchstarter.utils.DispatcherExecutor;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
@@ -59,10 +54,7 @@ import json.chao.com.wanandroid.utils.LogHelper;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 
 
-/**
- * @author quchao
- * @date 2017/11/28
- */
+
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
     @BindView(R.id.drawer_layout)

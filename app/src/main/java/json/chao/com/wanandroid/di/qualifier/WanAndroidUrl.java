@@ -1,16 +1,13 @@
 package json.chao.com.wanandroid.di.qualifier;
 
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 
 import javax.inject.Qualifier;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-/**
- * @author quchao
- * @date 2018/2/13
- */
 
 @Qualifier
 @Documented

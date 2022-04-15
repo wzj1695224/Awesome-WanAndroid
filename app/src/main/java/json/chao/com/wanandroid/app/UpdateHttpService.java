@@ -6,12 +6,7 @@ import com.xuexiang.xupdate.proxy.IUpdateHttpService;
 
 import java.util.Map;
 
-import json.chao.com.wanandroid.core.DataManager;
 
-/**
- * @author quchao
- * @date 2019/3/13
- */
 public class UpdateHttpService implements IUpdateHttpService {
 
     @Override

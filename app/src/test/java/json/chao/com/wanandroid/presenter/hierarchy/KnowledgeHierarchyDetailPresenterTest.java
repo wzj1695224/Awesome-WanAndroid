@@ -15,12 +15,7 @@ import json.chao.com.wanandroid.contract.hierarchy.KnowledgeHierarchyDetailContr
 import json.chao.com.wanandroid.core.event.SwitchNavigationEvent;
 import json.chao.com.wanandroid.core.event.SwitchProjectEvent;
 
-import static org.junit.Assert.*;
 
-/**
- * @author quchao
- * @date 2018/6/12
- */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class KnowledgeHierarchyDetailPresenterTest extends BasePresenterTest {

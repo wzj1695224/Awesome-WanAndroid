@@ -1,9 +1,5 @@
 package json.chao.com.wanandroid.core.bean.project;
 
-/**
- * @author quchao
- * @date 2018/2/24
- */
 
 public class ProjectClassifyData {
 

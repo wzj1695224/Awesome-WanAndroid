@@ -1,16 +1,11 @@
 package json.chao.com.wanandroid.aop;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 
-import json.chao.com.wanandroid.performance.wakelock.WakeLockUtils;
 import json.chao.com.wanandroid.utils.LogHelper;
 import me.ele.lancet.base.Origin;
 import me.ele.lancet.base.Scope;
 import me.ele.lancet.base.annotations.Insert;
-import me.ele.lancet.base.annotations.Proxy;
 import me.ele.lancet.base.annotations.TargetClass;
 
 public class ActivityHooker {

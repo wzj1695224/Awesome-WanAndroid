@@ -9,18 +9,12 @@ import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import java.util.List;
-
 import json.chao.com.wanandroid.BasePresenterTest;
 import json.chao.com.wanandroid.BuildConfig;
 import json.chao.com.wanandroid.contract.main.SearchContract;
-import json.chao.com.wanandroid.core.bean.main.search.TopSearchData;
 
 
-/**
- * @author quchao
- * @date 2018/6/12
- */
+
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class SearchPresenterTest extends BasePresenterTest {

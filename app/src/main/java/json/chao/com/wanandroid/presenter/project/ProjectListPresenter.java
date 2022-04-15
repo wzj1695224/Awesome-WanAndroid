@@ -1,14 +1,13 @@
 package json.chao.com.wanandroid.presenter.project;
 
-
 import javax.inject.Inject;
 
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.WanAndroidApp;
-import json.chao.com.wanandroid.component.RxBus;
-import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.base.presenter.BasePresenter;
+import json.chao.com.wanandroid.component.RxBus;
 import json.chao.com.wanandroid.contract.project.ProjectListContract;
+import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.bean.project.ProjectListData;
@@ -16,10 +15,6 @@ import json.chao.com.wanandroid.core.event.JumpToTheTopEvent;
 import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
-/**
- * @author quchao
- * @date 2018/2/24
- */
 
 public class ProjectListPresenter extends BasePresenter<ProjectListContract.View> implements ProjectListContract.Presenter {
 

@@ -20,11 +20,6 @@ import json.chao.com.wanandroid.app.WanAndroidApp;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
-/**
- * @author lw
- * @date 2018/1/25
- */
-
 public class PersistentCookieStore {
 
     private static final String LOG_TAG = "PersistentCookieStore";

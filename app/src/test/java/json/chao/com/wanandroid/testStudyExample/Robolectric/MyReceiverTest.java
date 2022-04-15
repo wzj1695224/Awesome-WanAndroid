@@ -13,14 +13,11 @@ import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
 import json.chao.com.wanandroid.BuildConfig;
-import json.chao.com.wanandroid.test.MyReceiver;
 import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.app.WanAndroidApp;
+import json.chao.com.wanandroid.test.MyReceiver;
 
-/**
- * @author quchao
- * @date 2018/6/6
- */
+
 
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)

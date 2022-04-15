@@ -3,22 +3,18 @@ package json.chao.com.wanandroid.base.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import json.chao.com.wanandroid.component.ActivityCollector;
 import json.chao.com.wanandroid.test.EspressoIdlingResource;
 import me.yokeyword.fragmentation.SupportActivity;
-import json.chao.com.wanandroid.component.ActivityCollector;
-import android.support.test.espresso.IdlingResource;
 
 
 /**
  * Common simple Activity
- *
- * @author quchao
- * @date 2017/11/28
  */
-
 public abstract class AbstractSimpleActivity extends SupportActivity {
 
     private Unbinder unBinder;

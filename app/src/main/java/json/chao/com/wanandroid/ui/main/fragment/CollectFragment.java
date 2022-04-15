@@ -26,10 +26,6 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 
 
-/**
- * @author quchao
- * @date 2018/2/27
- */
 
 public class CollectFragment extends BaseRootFragment<CollectPresenter> implements CollectContract.View {
 

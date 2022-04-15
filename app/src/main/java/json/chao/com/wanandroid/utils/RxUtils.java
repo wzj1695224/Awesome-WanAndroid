@@ -3,8 +3,6 @@ package json.chao.com.wanandroid.utils;
 import io.reactivex.FlowableTransformer;
 import io.reactivex.Observable;
 import io.reactivex.ObservableTransformer;
-import io.reactivex.Scheduler;
-import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -12,11 +10,6 @@ import json.chao.com.wanandroid.core.bean.BaseResponse;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.bean.main.login.LoginData;
 import json.chao.com.wanandroid.core.http.exception.OtherException;
-
-/**
- * Created by chao.qu at 2017/10/20
- * @author quchao
- */
 
 public class RxUtils {
 

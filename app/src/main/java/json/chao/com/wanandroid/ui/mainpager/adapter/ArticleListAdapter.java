@@ -18,10 +18,6 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.ui.mainpager.viewholder.KnowledgeHierarchyListViewHolder;
 import json.chao.com.wanandroid.utils.LogHelper;
 
-/**
- * @author quchao
- * @date 2018/2/24
- */
 
 public class ArticleListAdapter extends BaseQuickAdapter<FeedArticleData, KnowledgeHierarchyListViewHolder> {
 

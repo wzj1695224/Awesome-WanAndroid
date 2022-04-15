@@ -6,17 +6,13 @@ import javax.inject.Inject;
 
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.WanAndroidApp;
-import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.base.presenter.BasePresenter;
 import json.chao.com.wanandroid.contract.hierarchy.KnowledgeHierarchyContract;
+import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.core.bean.hierarchy.KnowledgeHierarchyData;
 import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
-/**
- * @author quchao
- * @date 2017/12/7
- */
 
 public class KnowledgeHierarchyPresenter extends BasePresenter<KnowledgeHierarchyContract.View>
         implements KnowledgeHierarchyContract.Presenter {

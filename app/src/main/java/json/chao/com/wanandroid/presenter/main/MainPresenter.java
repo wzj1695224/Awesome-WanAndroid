@@ -4,10 +4,10 @@ import javax.inject.Inject;
 
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.WanAndroidApp;
-import json.chao.com.wanandroid.component.RxBus;
-import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.base.presenter.BasePresenter;
+import json.chao.com.wanandroid.component.RxBus;
 import json.chao.com.wanandroid.contract.main.MainContract;
+import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.core.bean.main.login.LoginData;
 import json.chao.com.wanandroid.core.event.AutoLoginEvent;
 import json.chao.com.wanandroid.core.event.LoginEvent;
@@ -20,10 +20,7 @@ import json.chao.com.wanandroid.widget.BaseObserver;
 import json.chao.com.wanandroid.widget.BaseSubscribe;
 
 
-/**
- * @author quchao
- * @date 2017/11/28
- */
+
 public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
 
     private DataManager mDataManager;

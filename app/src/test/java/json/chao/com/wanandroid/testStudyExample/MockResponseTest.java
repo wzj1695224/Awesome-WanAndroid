@@ -12,10 +12,7 @@ import json.chao.com.wanandroid.test.GithubService;
 import json.chao.com.wanandroid.test.User;
 import json.chao.com.wanandroid.utils.RxUtils;
 
-/**
- * @author quchao
- * @date 2018/6/5
- */
+
 
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)

@@ -1,6 +1,5 @@
 package json.chao.com.wanandroid.ui.wx.fragment;
 
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,10 +36,6 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 
 
-/**
- * @author quchao
- * @date 2018/10/31
- */
 public class WxDetailArticleFragment extends BaseRootFragment<WxDetailArticlePresenter> implements WxDetailContract.View{
 
     @BindView(R.id.normal_view)

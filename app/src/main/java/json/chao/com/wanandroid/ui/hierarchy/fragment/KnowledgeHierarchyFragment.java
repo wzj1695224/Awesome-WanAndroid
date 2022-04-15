@@ -14,20 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
-import json.chao.com.wanandroid.core.bean.hierarchy.KnowledgeHierarchyData;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.Constants;
+import json.chao.com.wanandroid.base.fragment.BaseRootFragment;
 import json.chao.com.wanandroid.contract.hierarchy.KnowledgeHierarchyContract;
+import json.chao.com.wanandroid.core.bean.hierarchy.KnowledgeHierarchyData;
 import json.chao.com.wanandroid.presenter.hierarchy.KnowledgeHierarchyPresenter;
 import json.chao.com.wanandroid.ui.hierarchy.activity.KnowledgeHierarchyDetailActivity;
 import json.chao.com.wanandroid.ui.hierarchy.adapter.KnowledgeHierarchyAdapter;
 import json.chao.com.wanandroid.utils.CommonUtils;
 
-/**
- * @author quchao
- * @date 2017/11/29
- */
 
 public class KnowledgeHierarchyFragment extends BaseRootFragment<KnowledgeHierarchyPresenter>
         implements KnowledgeHierarchyContract.View {

@@ -1,7 +1,7 @@
 package json.chao.com.wanandroid.core.event;
 
 /**
- * @author quchao
+ * hor quchao
  * @date 2018/3/23
  */
 

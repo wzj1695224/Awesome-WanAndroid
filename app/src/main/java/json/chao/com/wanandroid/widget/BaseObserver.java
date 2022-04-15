@@ -3,19 +3,13 @@ package json.chao.com.wanandroid.widget;
 import android.text.TextUtils;
 
 import io.reactivex.observers.ResourceObserver;
+import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.WanAndroidApp;
 import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.http.exception.ServerException;
-import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.utils.LogHelper;
 import retrofit2.HttpException;
 
-/**
- * @author quchao
- * @date 2017/11/27
- *
- * @param <T>
- */
 
 public abstract class BaseObserver<T> extends ResourceObserver<T> {
 

@@ -1,6 +1,5 @@
 package json.chao.com.wanandroid.performance.net;
 
-
 import android.content.Context;
 
 import com.alibaba.sdk.android.httpdns.HttpDns;
@@ -15,11 +14,9 @@ import java.util.List;
 import json.chao.com.wanandroid.utils.LogHelper;
 import okhttp3.Dns;
 
+
 /**
- * FileName: OkHttpDNS
- * Date: 2020/5/8 16:08
- * Description: HttpDns 优化
- * @author quchao
+ * HttpDns 优化
  */
 public class OkHttpDns implements Dns {
 

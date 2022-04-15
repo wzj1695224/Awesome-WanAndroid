@@ -8,18 +8,15 @@ import javax.inject.Inject;
 
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.WanAndroidApp;
-import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.base.presenter.BasePresenter;
 import json.chao.com.wanandroid.contract.main.ArticleDetailContract;
+import json.chao.com.wanandroid.core.DataManager;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
 
-/**
- * @author quchao
- * @date 2018/2/13
- */
+
 
 public class ArticleDetailPresenter extends BasePresenter<ArticleDetailContract.View> implements ArticleDetailContract.Presenter {
 

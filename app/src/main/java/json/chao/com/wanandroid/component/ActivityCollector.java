@@ -5,13 +5,10 @@ import android.app.Activity;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  * 一键退出App
- *
- * @author quchao
- * @date 2017/11/28
  */
-
 public class ActivityCollector {
 
     private static ActivityCollector activityCollector;

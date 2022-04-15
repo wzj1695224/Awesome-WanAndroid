@@ -8,10 +8,6 @@ import okhttp3.Protocol;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-/**
- * @author quchao
- * @date 2018/6/7
- */
 public class MockInterceptor implements Interceptor {
 
     private String responseString;

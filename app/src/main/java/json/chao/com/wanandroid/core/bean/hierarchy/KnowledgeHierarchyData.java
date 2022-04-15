@@ -3,10 +3,6 @@ package json.chao.com.wanandroid.core.bean.hierarchy;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @author quchao
- * @date 2018/2/23
- */
 
 public class KnowledgeHierarchyData implements Serializable {
 

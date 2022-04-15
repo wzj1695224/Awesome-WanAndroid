@@ -4,10 +4,6 @@ import io.reactivex.Flowable;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
 
 public class RxBus {
 

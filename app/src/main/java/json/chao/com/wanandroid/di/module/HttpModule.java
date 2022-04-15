@@ -12,10 +12,14 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import json.chao.com.wanandroid.BuildConfig;
+import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.app.WanAndroidApp;
+import json.chao.com.wanandroid.core.http.api.GeeksApis;
+import json.chao.com.wanandroid.di.qualifier.WanAndroidUrl;
 import json.chao.com.wanandroid.performance.net.OkHttpDns;
-import json.chao.com.wanandroid.performance.net.OkHttpEvent;
 import json.chao.com.wanandroid.performance.net.OkHttpEventListener;
+import json.chao.com.wanandroid.utils.CommonUtils;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -24,19 +28,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
-import json.chao.com.wanandroid.core.http.api.GeeksApis;
-import json.chao.com.wanandroid.BuildConfig;
-import json.chao.com.wanandroid.app.Constants;
-import json.chao.com.wanandroid.di.qualifier.WanAndroidUrl;
-import json.chao.com.wanandroid.utils.CommonUtils;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
+
 
 @Module
 public class HttpModule {

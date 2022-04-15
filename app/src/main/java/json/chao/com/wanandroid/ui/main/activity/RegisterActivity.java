@@ -3,7 +3,6 @@ package json.chao.com.wanandroid.ui.main.activity;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,15 +17,11 @@ import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.base.activity.BaseActivity;
 import json.chao.com.wanandroid.contract.main.RegisterContract;
-import json.chao.com.wanandroid.core.bean.main.login.LoginData;
 import json.chao.com.wanandroid.presenter.main.RegisterPresenter;
 import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 
-/**
- * @author quchao
- * @date 2018/5/4
- */
+
 
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterContract.View {
 

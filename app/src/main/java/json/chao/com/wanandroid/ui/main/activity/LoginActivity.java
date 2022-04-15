@@ -14,18 +14,14 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.base.activity.BaseActivity;
-import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.contract.main.LoginContract;
 import json.chao.com.wanandroid.presenter.main.LoginPresenter;
 import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 
-/**
- * @author quchao
- * @date 2018/2/26
- */
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
 

@@ -10,19 +10,16 @@ import com.squareup.leakcanary.RefWatcher;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.app.WanAndroidApp;
-import me.yokeyword.fragmentation.SupportFragment;
-import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.utils.CommonUtils;
+import me.yokeyword.fragmentation.SupportFragment;
+
 
 /**
  * Common simple fragment
- *
- * @author quchao
- * @date 2017/11/28
  */
-
 public abstract class AbstractSimpleFragment extends SupportFragment {
 
     private Unbinder unBinder;

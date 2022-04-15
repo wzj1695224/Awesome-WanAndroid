@@ -1,9 +1,5 @@
 package json.chao.com.wanandroid.test;
 
-/**
- * @author quchao
- * @date 2018/6/6
- */
 public class Person {
 
     private String name;

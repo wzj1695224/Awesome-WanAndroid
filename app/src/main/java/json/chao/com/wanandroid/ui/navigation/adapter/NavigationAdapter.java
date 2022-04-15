@@ -22,10 +22,6 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 
 
-/**
- * @author quchao
- * @date 2018/3/2
- */
 
 public class NavigationAdapter extends BaseQuickAdapter<NavigationListData, NavigationViewHolder> {
 

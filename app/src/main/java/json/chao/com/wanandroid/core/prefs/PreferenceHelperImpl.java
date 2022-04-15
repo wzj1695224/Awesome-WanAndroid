@@ -8,10 +8,6 @@ import javax.inject.Inject;
 import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.app.WanAndroidApp;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
 
 public class PreferenceHelperImpl implements PreferenceHelper {
 

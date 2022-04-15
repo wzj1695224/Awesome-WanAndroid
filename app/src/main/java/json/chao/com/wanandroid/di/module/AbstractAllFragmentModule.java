@@ -14,10 +14,7 @@ import json.chao.com.wanandroid.ui.project.fragment.ProjectListFragment;
 import json.chao.com.wanandroid.ui.wx.fragment.WxArticleFragment;
 import json.chao.com.wanandroid.ui.wx.fragment.WxDetailArticleFragment;
 
-/**
- * @author quchao
- * @date 2018/5/4
- */
+
 
 @Module(subcomponents = BaseFragmentComponent.class)
 public abstract class AbstractAllFragmentModule {

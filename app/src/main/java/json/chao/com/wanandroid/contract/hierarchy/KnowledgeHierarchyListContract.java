@@ -5,10 +5,7 @@ import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 
-/**
- * @author quchao
- * @date 2018/2/23
- */
+
 
 public interface KnowledgeHierarchyListContract {
 

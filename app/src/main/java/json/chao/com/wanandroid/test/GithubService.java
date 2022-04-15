@@ -6,10 +6,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * @author quchao
- * @date 2018/6/7
- */
 public class GithubService {
 
     private static Retrofit retrofit = new Retrofit.Builder()

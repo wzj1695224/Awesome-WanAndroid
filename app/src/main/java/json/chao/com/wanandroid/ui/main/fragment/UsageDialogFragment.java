@@ -33,10 +33,6 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 import json.chao.com.wanandroid.widget.CircularRevealAnim;
 
-/**
- * @author quchao
- * @date 2018/4/2
- */
 
 public class UsageDialogFragment extends BaseDialogFragment<UsageDialogPresenter> implements
         UsageDialogContract.View,

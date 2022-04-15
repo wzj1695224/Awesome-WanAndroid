@@ -4,10 +4,6 @@ import java.util.List;
 
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 
-/**
- * @author quchao
- * @date 2018/2/24
- */
 
 public class ProjectListData {
 

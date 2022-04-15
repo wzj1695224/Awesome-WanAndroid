@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.multidex.MultiDex;
@@ -13,7 +12,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.Choreographer;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.facebook.stetho.Stetho;
@@ -26,8 +24,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-import com.taobao.android.dexposed.DexposedBridge;
-import com.taobao.android.dexposed.XC_MethodHook;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xupdate.entity.UpdateError;
@@ -47,17 +43,12 @@ import json.chao.com.wanandroid.di.component.AppComponent;
 import json.chao.com.wanandroid.di.component.DaggerAppComponent;
 import json.chao.com.wanandroid.di.module.AppModule;
 import json.chao.com.wanandroid.di.module.HttpModule;
-import json.chao.com.wanandroid.performance.memory.ImageHook;
 import json.chao.com.wanandroid.utils.CommonUtils;
-import json.chao.com.wanandroid.utils.LogHelper;
 import json.chao.com.wanandroid.utils.logger.TxtFormatStrategy;
 
 //import dagger.android.HasActivityInjector;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
+
 public class WanAndroidApp extends Application implements HasActivityInjector {
 
     private static final String TAG = "WanAndroidApp";

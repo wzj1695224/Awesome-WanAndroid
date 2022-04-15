@@ -6,13 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import json.chao.com.wanandroid.R;
 
 
-/**
- * @author quchao
- * @date 2018/6/6
- */
 public class TestFragment extends Fragment {
 
     @Nullable

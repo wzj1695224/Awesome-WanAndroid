@@ -6,10 +6,7 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.bean.project.ProjectListData;
 
-/**
- * @author quchao
- * @date 2018/2/24
- */
+
 
 public interface ProjectListContract {
 

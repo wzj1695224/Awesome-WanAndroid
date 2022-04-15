@@ -2,10 +2,6 @@ package json.chao.com.wanandroid.core.bean.main.collect;
 
 import java.io.Serializable;
 
-/**
- * @author quchao
- * @date 2018/2/12
- */
 
 public class FeedArticleData implements Serializable {
 

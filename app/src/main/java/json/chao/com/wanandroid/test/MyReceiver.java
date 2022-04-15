@@ -9,10 +9,6 @@ import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.app.WanAndroidApp;
 
 
-/**
- * @author quchao
- * @date 2018/6/6
- */
 public class MyReceiver extends BroadcastReceiver {
 
     public static final String APP_NAME = "app_name";

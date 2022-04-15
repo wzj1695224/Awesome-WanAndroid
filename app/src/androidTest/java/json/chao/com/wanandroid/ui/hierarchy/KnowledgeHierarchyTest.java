@@ -1,5 +1,8 @@
 package json.chao.com.wanandroid.ui.hierarchy;
 
+import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
+import static android.support.test.espresso.Espresso.pressBack;
+
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.IdlingResource;
@@ -17,14 +20,8 @@ import json.chao.com.wanandroid.BasePageTest;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.ui.main.activity.MainActivity;
 
-import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
-import static android.support.test.espresso.Espresso.pressBack;
 
 
-/**
- * @author quchao
- * @date 2018/6/25
- */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class KnowledgeHierarchyTest extends BasePageTest {

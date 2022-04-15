@@ -12,10 +12,7 @@ import json.chao.com.wanandroid.ui.main.activity.RegisterActivity;
 import json.chao.com.wanandroid.ui.main.activity.SearchListActivity;
 import json.chao.com.wanandroid.ui.main.activity.SplashActivity;
 
-/**
- * @author quchao
- * @date 2018/5/3
- */
+
 
 @Module(subcomponents = {BaseActivityComponent.class})
 public abstract class AbstractAllActivityModule {
