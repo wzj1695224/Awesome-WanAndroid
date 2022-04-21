@@ -29,6 +29,7 @@ import json.chao.com.wanandroid.presenter.hierarchy.KnowledgeHierarchyDetailPres
 import json.chao.com.wanandroid.ui.hierarchy.fragment.KnowledgeHierarchyListFragment;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 
+
 public class KnowledgeHierarchyDetailActivity extends BaseActivity<KnowledgeHierarchyDetailPresenter>
         implements KnowledgeHierarchyDetailContract.View {
 
@@ -47,6 +48,14 @@ public class KnowledgeHierarchyDetailActivity extends BaseActivity<KnowledgeHier
     private List<BaseFragment> mFragments = new ArrayList<>();
     private String chapterName;
 
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleActivity
+    //
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_knowledge_hierarchy_detail;
@@ -55,11 +64,14 @@ public class KnowledgeHierarchyDetailActivity extends BaseActivity<KnowledgeHier
     @Override
     protected void initToolbar() {
         setSupportActionBar(mToolbar);
+
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayShowTitleEnabled(false);
+
         StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this, R.color.main_status_bar_blue), 1f);
         mToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
+
         if (getIntent().getBooleanExtra(Constants.IS_SINGLE_CHAPTER, false)) {
             startSingleChapterPager();
         } else {
@@ -70,27 +82,6 @@ public class KnowledgeHierarchyDetailActivity extends BaseActivity<KnowledgeHier
     @Override
     protected void initEventAndData() {
         initViewPagerAndTabLayout();
-    }
-
-    @OnClick({R.id.knowledge_floating_action_btn})
-    void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.knowledge_floating_action_btn:
-                RxBus.getDefault().post(new KnowledgeJumpTopEvent());
-                break;
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public void showSwitchProject() {
-        onBackPressedSupport();
-    }
-
-    @Override
-    public void showSwitchNavigation() {
-        onBackPressedSupport();
     }
 
     private void initViewPagerAndTabLayout() {
@@ -117,6 +108,49 @@ public class KnowledgeHierarchyDetailActivity extends BaseActivity<KnowledgeHier
         mTabLayout.setViewPager(mViewPager);
     }
 
+    //
+    //    AbstractSimpleActivity
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    View Contract
+    //
+
+    @Override
+    public void showSwitchProject() {
+        onBackPressedSupport();
+    }
+
+    @Override
+    public void showSwitchNavigation() {
+        onBackPressedSupport();
+    }
+
+    //
+    //    View Contract
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    @OnClick({R.id.knowledge_floating_action_btn})
+    void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.knowledge_floating_action_btn:
+                RxBus.getDefault().post(new KnowledgeJumpTopEvent());
+                break;
+            default:
+                break;
+        }
+    }
+
+
     /**
      * 装载多个列表的知识体系页面（knowledge进入）
      */
@@ -125,11 +159,12 @@ public class KnowledgeHierarchyDetailActivity extends BaseActivity<KnowledgeHier
         if (knowledgeHierarchyData == null || knowledgeHierarchyData.getName() == null) {
             return;
         }
+
         mTitleTv.setText(knowledgeHierarchyData.getName().trim());
+
         knowledgeHierarchyDataList = knowledgeHierarchyData.getChildren();
-        if (knowledgeHierarchyDataList == null) {
+        if (knowledgeHierarchyDataList == null)
             return;
-        }
         for (KnowledgeHierarchyData data : knowledgeHierarchyDataList) {
             mFragments.add(KnowledgeHierarchyListFragment.getInstance(data.getId(), null));
         }

@@ -37,6 +37,9 @@ public class KnowledgeHierarchyFragment extends BaseRootFragment<KnowledgeHierar
     private KnowledgeHierarchyAdapter mAdapter;
     private boolean isRefresh;
 
+
+
+
     public static KnowledgeHierarchyFragment getInstance(String param1, String param2) {
         KnowledgeHierarchyFragment fragment = new KnowledgeHierarchyFragment();
         Bundle args = new Bundle();
@@ -46,20 +49,74 @@ public class KnowledgeHierarchyFragment extends BaseRootFragment<KnowledgeHierar
         return fragment;
     }
 
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_knowledge_hierarchy;
     }
 
+
+    @Override
+    protected void initView() {
+        super.initView();
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+        mKnowledgeHierarchyDataList = new ArrayList<>();
+
+        mAdapter = new KnowledgeHierarchyAdapter(R.layout.item_knowledge_hierarchy, mKnowledgeHierarchyDataList);
+        mAdapter.setOnItemClickListener((adapter, view, position) -> startDetailPager(view, position));
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
-        setRefresh();
+        setupRefreshLayout();
         mPresenter.getKnowledgeHierarchyData(true);
         if (CommonUtils.isNetworkConnected()) {
             showLoading();
         }
     }
+
+    private void setupRefreshLayout() {
+        mRefreshLayout.setPrimaryColorsId(Constants.BLUE_THEME, R.color.white);
+        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
+            isRefresh = true;
+            mPresenter.getKnowledgeHierarchyData(false);
+            refreshLayout.finishRefresh(1000);
+        });
+        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            isRefresh = false;
+            mPresenter.getKnowledgeHierarchyData(false);
+            refreshLayout.finishLoadMore(1000);
+        });
+    }
+
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    View Contract
+    //
 
     @Override
     public void showKnowledgeHierarchyData(List<KnowledgeHierarchyData> knowledgeHierarchyDataList) {
@@ -79,6 +136,14 @@ public class KnowledgeHierarchyFragment extends BaseRootFragment<KnowledgeHierar
         showNormal();
     }
 
+    //
+    //    View Contract
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
     @Override
     public void showError() {
         mRecyclerView.setVisibility(View.INVISIBLE);
@@ -96,21 +161,6 @@ public class KnowledgeHierarchyFragment extends BaseRootFragment<KnowledgeHierar
         if (mRecyclerView != null) {
             mRecyclerView.smoothScrollToPosition(0);
         }
-    }
-
-    @Override
-    protected void initView() {
-        super.initView();
-        initRecyclerView();
-    }
-
-    private void initRecyclerView() {
-        mKnowledgeHierarchyDataList = new ArrayList<>();
-        mAdapter = new KnowledgeHierarchyAdapter(R.layout.item_knowledge_hierarchy, mKnowledgeHierarchyDataList);
-        mAdapter.setOnItemClickListener((adapter, view, position) -> startDetailPager(view, position));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void startDetailPager(View view, int position) {
@@ -134,20 +184,6 @@ public class KnowledgeHierarchyFragment extends BaseRootFragment<KnowledgeHierar
      */
     private boolean modelFiltering() {
         return !Build.MANUFACTURER.contains(Constants.SAMSUNG) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
-    }
-
-    private void setRefresh() {
-        mRefreshLayout.setPrimaryColorsId(Constants.BLUE_THEME, R.color.white);
-        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
-            isRefresh = true;
-            mPresenter.getKnowledgeHierarchyData(false);
-            refreshLayout.finishRefresh(1000);
-        });
-        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
-            isRefresh = false;
-            mPresenter.getKnowledgeHierarchyData(false);
-            refreshLayout.finishLoadMore(1000);
-        });
     }
 
 }

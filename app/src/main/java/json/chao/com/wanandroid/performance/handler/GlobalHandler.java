@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import json.chao.com.wanandroid.utils.LogHelper;
 
+
 public class GlobalHandler extends Handler {
 
     private long mStartTime = System.currentTimeMillis();

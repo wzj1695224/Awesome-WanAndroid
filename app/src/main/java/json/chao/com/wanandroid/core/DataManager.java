@@ -1,6 +1,5 @@
 package json.chao.com.wanandroid.core;
 
-
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -20,22 +19,20 @@ import json.chao.com.wanandroid.core.db.DbHelper;
 import json.chao.com.wanandroid.core.http.HttpHelper;
 import json.chao.com.wanandroid.core.prefs.PreferenceHelper;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
 
 public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
 
-    private HttpHelper mHttpHelper;
-    private DbHelper mDbHelper;
-    private PreferenceHelper mPreferenceHelper;
+    private final HttpHelper mHttpHelper;
+    private final DbHelper mDbHelper;
+    private final PreferenceHelper mPreferenceHelper;
+
 
     public DataManager(HttpHelper httpHelper, DbHelper dbHelper, PreferenceHelper preferencesHelper) {
         mHttpHelper = httpHelper;
         mDbHelper = dbHelper;
         mPreferenceHelper = preferencesHelper;
     }
+
 
     @Override
     public Observable<BaseResponse<FeedArticleListData>> getFeedArticleList(int pageNum) {

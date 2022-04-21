@@ -7,7 +7,6 @@ import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.bean.navigation.NavigationListData;
 
 
-
 public interface NavigationContract {
 
     interface View extends AbstractView {

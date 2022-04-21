@@ -1,9 +1,5 @@
 package json.chao.com.wanandroid.core.bean.main.search;
 
-/**
- * @author quchao
- * @date 2018/2/23
- */
 
 public class UsefulSiteData {
 

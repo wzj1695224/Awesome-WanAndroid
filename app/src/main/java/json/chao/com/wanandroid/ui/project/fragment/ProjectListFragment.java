@@ -39,22 +39,91 @@ public class ProjectListFragment extends BaseRootFragment<ProjectListPresenter> 
     private int mCurrentPage;
     private int cid;
 
+
+
+
+    public static ProjectListFragment getInstance(int param1, String param2) {
+        ProjectListFragment fragment = new ProjectListFragment();
+        Bundle args = new Bundle();
+        args.putInt(Constants.ARG_PARAM1, param1);
+        args.putString(Constants.ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_project_list;
     }
 
+
+    @Override
+    protected void initView() {
+        super.initView();
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+        List<FeedArticleData> mDatas = new ArrayList<>();
+
+        mAdapter = new ProjectListAdapter(R.layout.item_project_list, mDatas);
+        mAdapter.setOnItemClickListener((adapter, view, position) -> startProjectPager(position));
+        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
-        setRefresh();
+        setupRefreshLayout();
+
         Bundle bundle = getArguments();
         cid = bundle.getInt(Constants.ARG_PARAM1);
         mPresenter.getProjectListData(mCurrentPage, cid, true);
+
         if (CommonUtils.isNetworkConnected()) {
             showLoading();
         }
     }
+
+    private void setupRefreshLayout() {
+        mCurrentPage = 1;
+        if (mRefreshLayout == null) {
+            return;
+        }
+        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
+            mCurrentPage = 1;
+            isRefresh = true;
+            mPresenter.getProjectListData(mCurrentPage, cid, false);
+            refreshLayout.finishRefresh(1000);
+        });
+        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            mCurrentPage++;
+            isRefresh = false;
+            mPresenter.getProjectListData(mCurrentPage, cid, false);
+            refreshLayout.finishLoadMore(1000);
+        });
+    }
+
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @Override
     public void reload() {
@@ -96,22 +165,6 @@ public class ProjectListFragment extends BaseRootFragment<ProjectListPresenter> 
         }
     }
 
-    @Override
-    protected void initView() {
-        super.initView();
-        initRecyclerView();
-    }
-
-    private void initRecyclerView() {
-        List<FeedArticleData> mDatas = new ArrayList<>();
-        mAdapter = new ProjectListAdapter(R.layout.item_project_list, mDatas);
-        mAdapter.setOnItemClickListener((adapter, view, position) -> startProjectPager(position));
-        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
     private void clickChildEvent(View view, int position) {
         switch (view.getId()) {
             case R.id.item_project_list_install_tv:
@@ -144,34 +197,6 @@ public class ProjectListFragment extends BaseRootFragment<ProjectListPresenter> 
                 mAdapter.getData().get(position).isCollect(),
                 false,
                 true);
-    }
-
-    public static ProjectListFragment getInstance(int param1, String param2) {
-        ProjectListFragment fragment = new ProjectListFragment();
-        Bundle args = new Bundle();
-        args.putInt(Constants.ARG_PARAM1, param1);
-        args.putString(Constants.ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    private void setRefresh() {
-        mCurrentPage = 1;
-        if (mRefreshLayout == null) {
-            return;
-        }
-        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
-            mCurrentPage = 1;
-            isRefresh = true;
-            mPresenter.getProjectListData(mCurrentPage, cid, false);
-            refreshLayout.finishRefresh(1000);
-        });
-        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
-            mCurrentPage++;
-            isRefresh = false;
-            mPresenter.getProjectListData(mCurrentPage, cid, false);
-            refreshLayout.finishLoadMore(1000);
-        });
     }
 
 }

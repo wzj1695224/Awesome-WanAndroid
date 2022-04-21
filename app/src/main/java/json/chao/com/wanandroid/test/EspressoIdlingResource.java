@@ -2,6 +2,7 @@ package json.chao.com.wanandroid.test;
 
 import android.support.test.espresso.IdlingResource;
 
+
 public class EspressoIdlingResource {
 
     private static final String RESOURCE = "GLOBAL";

@@ -26,7 +26,6 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 
 
-
 public class CollectFragment extends BaseRootFragment<CollectPresenter> implements CollectContract.View {
 
     @BindView(R.id.normal_view)
@@ -41,10 +40,31 @@ public class CollectFragment extends BaseRootFragment<CollectPresenter> implemen
     private List<FeedArticleData> mArticles;
     private ArticleListAdapter mAdapter;
 
+
+
+
+    public static CollectFragment getInstance(String param1, String param2) {
+        CollectFragment fragment = new CollectFragment();
+        Bundle args = new Bundle();
+        args.putString(Constants.ARG_PARAM1, param1);
+        args.putString(Constants.ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_collect;
     }
+
 
     @Override
     protected void initView() {
@@ -52,15 +72,53 @@ public class CollectFragment extends BaseRootFragment<CollectPresenter> implemen
         initRecyclerView();
     }
 
+    private void initRecyclerView() {
+        mArticles = new ArrayList<>();
+        mAdapter = new ArticleListAdapter(R.layout.item_search_pager, mArticles);
+        mAdapter.isCollectPage();
+        mAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view, position));
+        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
+
         mPresenter.getCollectList(mCurrentPage, true);
-        setRefresh();
+
+        setupRefreshLayout();
+
         if (CommonUtils.isNetworkConnected()) {
             showLoading();
         }
     }
+
+    private void setupRefreshLayout() {
+        mRefreshLayout.setPrimaryColorsId(Constants.BLUE_THEME, R.color.white);
+        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
+            showRefreshEvent();
+            refreshLayout.finishRefresh(1000);
+        });
+        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            mCurrentPage++;
+            isRefresh = false;
+            mPresenter.getCollectList(mCurrentPage, false);
+            refreshLayout.finishLoadMore(1000);
+        });
+    }
+
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @Override
     public void onResume() {
@@ -114,26 +172,6 @@ public class CollectFragment extends BaseRootFragment<CollectPresenter> implemen
     @Override
     public void reload() {
         mRefreshLayout.autoRefresh();
-    }
-
-    public static CollectFragment getInstance(String param1, String param2) {
-        CollectFragment fragment = new CollectFragment();
-        Bundle args = new Bundle();
-        args.putString(Constants.ARG_PARAM1, param1);
-        args.putString(Constants.ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    private void initRecyclerView() {
-        mArticles = new ArrayList<>();
-        mAdapter = new ArticleListAdapter(R.layout.item_search_pager, mArticles);
-        mAdapter.isCollectPage();
-        mAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view, position));
-        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void clickChildEvent(View view, int position) {
@@ -190,20 +228,6 @@ public class CollectFragment extends BaseRootFragment<CollectPresenter> implemen
                 CommonUtils.showMessage(_mActivity, getString(R.string.load_more_no_data));
             }
         }
-    }
-
-    private void setRefresh() {
-        mRefreshLayout.setPrimaryColorsId(Constants.BLUE_THEME, R.color.white);
-        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
-            showRefreshEvent();
-            refreshLayout.finishRefresh(1000);
-        });
-        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
-            mCurrentPage++;
-            isRefresh = false;
-            mPresenter.getCollectList(mCurrentPage, false);
-            refreshLayout.finishLoadMore(1000);
-        });
     }
 
 }

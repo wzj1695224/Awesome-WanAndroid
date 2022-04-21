@@ -4,10 +4,7 @@ import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
-/**
- * @author quchao
- * @date 2018/5/30
- */
+
 public class MyRuler implements TestRule {
 
     @Override

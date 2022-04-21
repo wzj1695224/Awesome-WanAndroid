@@ -17,10 +17,7 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.http.cookies.CookiesManager;
 
 
-/**
- * @author quchao
- * @date 2018/6/11
- */
+
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class ArticleDetailPresenterTest extends BasePresenterTest {

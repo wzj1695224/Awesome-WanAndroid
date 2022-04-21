@@ -14,10 +14,6 @@ import json.chao.com.wanandroid.core.event.CollectEvent;
 import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
-/**
- * @author quchao
- * @date 2018/2/27
- */
 
 public class CollectPresenter extends BasePresenter<CollectContract.View> implements CollectContract.Presenter {
 

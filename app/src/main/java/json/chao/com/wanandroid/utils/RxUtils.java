@@ -11,6 +11,7 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.bean.main.login.LoginData;
 import json.chao.com.wanandroid.core.http.exception.OtherException;
 
+
 public class RxUtils {
 
     /**
@@ -19,9 +20,11 @@ public class RxUtils {
      * @return FlowableTransformer
      */
     public static <T> FlowableTransformer<T, T> rxFlSchedulerHelper() {
-        return flowable -> flowable.subscribeOn(Schedulers.io())
+        return flowable -> flowable
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
 
     /**
      * 统一线程处理
@@ -29,26 +32,30 @@ public class RxUtils {
      * @return ObservableTransformer
      */
     public static <T> ObservableTransformer<T, T> rxSchedulerHelper() {
-        return observable -> observable.subscribeOn(Schedulers.io())
+        return observable -> observable
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
 
     /**
      * 统一返回结果处理
      * @param <T> 指定的泛型类型
      * @return ObservableTransformer
      */
-    public static <T> ObservableTransformer<BaseResponse<T>, T> handleResult() {
-        return httpResponseObservable ->
-                httpResponseObservable.flatMap((Function<BaseResponse<T>, Observable<T>>) baseResponse -> {
-            if(baseResponse.getErrorCode() == BaseResponse.SUCCESS
-                    && baseResponse.getData() != null
-                    && CommonUtils.isNetworkConnected()) {
-                return createData(baseResponse.getData());
-            } else {
-                return Observable.error(new OtherException());
-            }
-        });
+    public static <T>
+    ObservableTransformer<BaseResponse<T>, T>
+    handleResult() {
+        return respObservable -> respObservable.flatMap(
+                (Function<BaseResponse<T>, Observable<T>>) resp -> {
+                    if(resp.getErrorCode() == BaseResponse.SUCCESS
+                            && resp.getData() != null
+                            && CommonUtils.isNetworkConnected()) {
+                        return createData(resp.getData());
+                    } else {
+                        return Observable.error(new OtherException());
+                    }
+                });
     }
 
     /**

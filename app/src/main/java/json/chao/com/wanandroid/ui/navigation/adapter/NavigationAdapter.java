@@ -22,7 +22,6 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.JudgeUtils;
 
 
-
 public class NavigationAdapter extends BaseQuickAdapter<NavigationListData, NavigationViewHolder> {
 
     public NavigationAdapter(int layoutResId, @Nullable List<NavigationListData> data) {

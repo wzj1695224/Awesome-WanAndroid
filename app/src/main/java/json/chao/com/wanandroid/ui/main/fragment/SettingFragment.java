@@ -21,14 +21,11 @@ import json.chao.com.wanandroid.core.event.NightModeEvent;
 import json.chao.com.wanandroid.presenter.main.SettingPresenter;
 import json.chao.com.wanandroid.utils.ShareUtil;
 
-/**
- * @author quchao
- * @date 2018/4/2
- */
 
-public class SettingFragment extends BaseFragment<SettingPresenter> implements
-        SettingContract.View,
-        CompoundButton.OnCheckedChangeListener {
+public class SettingFragment extends BaseFragment<SettingPresenter>
+        implements
+            SettingContract.View,
+            CompoundButton.OnCheckedChangeListener {
 
     @BindView(R.id.cb_setting_cache)
     AppCompatCheckBox mCbSettingCache;
@@ -45,10 +42,31 @@ public class SettingFragment extends BaseFragment<SettingPresenter> implements
 
     private File cacheFile;
 
+
+
+
+    public static SettingFragment getInstance(String param1, String param2) {
+        SettingFragment fragment = new SettingFragment();
+        Bundle args = new Bundle();
+        args.putString(Constants.ARG_PARAM1, param1);
+        args.putString(Constants.ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_setting;
     }
+
 
     @Override
     protected void initEventAndData() {
@@ -61,6 +79,14 @@ public class SettingFragment extends BaseFragment<SettingPresenter> implements
         mCbSettingImage.setOnCheckedChangeListener(this);
         mCbSettingNight.setOnCheckedChangeListener(this);
     }
+
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @OnClick({R.id.ll_setting_feedback, R.id.ll_setting_clear})
     void onClick(View view) {
@@ -92,15 +118,6 @@ public class SettingFragment extends BaseFragment<SettingPresenter> implements
             default:
                 break;
         }
-    }
-
-    public static SettingFragment getInstance(String param1, String param2) {
-        SettingFragment fragment = new SettingFragment();
-        Bundle args = new Bundle();
-        args.putString(Constants.ARG_PARAM1, param1);
-        args.putString(Constants.ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     private void clearCache() {

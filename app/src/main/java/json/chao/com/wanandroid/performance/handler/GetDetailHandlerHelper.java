@@ -4,6 +4,7 @@ import android.os.Message;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+
 public class GetDetailHandlerHelper {
 
     private static ConcurrentHashMap<Message, String> sMsgDetail = new ConcurrentHashMap<>();

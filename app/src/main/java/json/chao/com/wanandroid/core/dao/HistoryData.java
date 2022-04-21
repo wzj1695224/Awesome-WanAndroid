@@ -4,10 +4,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 
-/**
- * @author quchao
- * @date 2018/3/5
- */
+
 
 @Entity
 public class HistoryData {

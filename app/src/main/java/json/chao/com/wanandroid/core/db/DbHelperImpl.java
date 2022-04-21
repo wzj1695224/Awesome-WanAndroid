@@ -13,9 +13,6 @@ import json.chao.com.wanandroid.core.dao.HistoryDataDao;
 
 /**
  * 对外隐藏操作数据库的实现细节
- *
- * @author quchao
- * @date 2017/11/27
  */
 public class DbHelperImpl implements DbHelper {
 

@@ -7,11 +7,6 @@ import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.bean.main.search.UsefulSiteData;
 
 
-/**
- * @author quchao
- * @date 2018/4/2
- */
-
 public interface UsageDialogContract {
 
     interface View extends AbstractView {

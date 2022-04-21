@@ -13,12 +13,6 @@ import com.taobao.android.dexposed.XC_MethodHook;
 import json.chao.com.wanandroid.utils.LogHelper;
 
 
-/**
- * FileName: ImageHook
- * Date: 2019-12-28 10:41
- * Description:
- * @author quchao
- */
 public class ImageHook extends XC_MethodHook {
 
     @Override

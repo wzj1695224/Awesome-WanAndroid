@@ -1,5 +1,6 @@
 package json.chao.com.wanandroid.test;
 
+
 public class Person {
 
     private String name;

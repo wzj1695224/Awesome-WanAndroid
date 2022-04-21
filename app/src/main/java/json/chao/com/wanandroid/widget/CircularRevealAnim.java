@@ -6,10 +6,6 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 
-/**
- * @author quchao
- * @date 2018/3/1
- */
 
 public class CircularRevealAnim {
 
@@ -46,17 +42,13 @@ public class CircularRevealAnim {
             return;
         }
 
-        /**
-         * 计算 triggerView 的中心位置
-         */
+        // 计算 triggerView 的中心位置
         int[] tvLocation = {0, 0};
         triggerView.getLocationInWindow(tvLocation);
-        int tvX = (int) (tvLocation[0] + animView.getWidth() * 0.8);
+        int tvX = (int) (tvLocation[0] + animView.getWidth() * 0.8);    // circle动画中心 x坐标
         int tvY = tvLocation[1] + triggerView.getHeight() / 2;
 
-        /**
-         * 计算 animView 的中心位置
-         */
+        // 计算 animView 的中心位置
         int[] avLocation = {0, 0};
         animView.getLocationInWindow(avLocation);
         int avX = avLocation[0] + animView.getWidth() / 2;
@@ -76,10 +68,9 @@ public class CircularRevealAnim {
             rippleH = tvY - avLocation[1];
         }
 
-        float maxRadius = (float) Math.sqrt((double) (rippleW * rippleW + rippleH * rippleH));
+        float maxRadius = (float) Math.sqrt(rippleW * rippleW + rippleH * rippleH);
         float startRadius;
         float endRadius;
-
         if (isShow) {
             startRadius = 0f;
             endRadius = maxRadius;

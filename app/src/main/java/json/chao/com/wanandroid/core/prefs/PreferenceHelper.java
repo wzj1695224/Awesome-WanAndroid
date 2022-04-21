@@ -1,7 +1,6 @@
 package json.chao.com.wanandroid.core.prefs;
 
 
-
 public interface PreferenceHelper {
 
     /**

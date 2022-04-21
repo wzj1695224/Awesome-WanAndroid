@@ -10,14 +10,13 @@ import json.chao.com.wanandroid.base.presenter.AbstractPresenter;
 import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.utils.CommonUtils;
 
+
 /**
  * MVP模式的Base Dialog fragment
- *
- * @author quchao
- * @date 2017/11/28
  */
-
-public abstract class BaseDialogFragment<T extends AbstractPresenter> extends AbstractSimpleDialogFragment
+@SuppressWarnings("rawtypes")
+public abstract class BaseDialogFragment<T extends AbstractPresenter>
+        extends AbstractSimpleDialogFragment
         implements AbstractView {
 
     @Inject

@@ -1,9 +1,5 @@
 package json.chao.com.wanandroid.core.bean.main.banner;
 
-/**
- * @author quchao
- * @date 2018/3/2
- */
 
 public class BannerData {
 

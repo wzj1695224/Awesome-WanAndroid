@@ -8,7 +8,6 @@ import json.chao.com.wanandroid.core.bean.main.search.TopSearchData;
 import json.chao.com.wanandroid.core.dao.HistoryData;
 
 
-
 public interface SearchContract {
 
     interface View extends AbstractView {

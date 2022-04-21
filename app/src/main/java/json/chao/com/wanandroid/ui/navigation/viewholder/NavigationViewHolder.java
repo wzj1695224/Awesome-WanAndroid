@@ -10,10 +10,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import json.chao.com.wanandroid.R;
 
-/**
- * @author quchao
- * @date 2018/3/14
- */
 
 public class NavigationViewHolder extends BaseViewHolder {
 

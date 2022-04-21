@@ -14,10 +14,6 @@ import json.chao.com.wanandroid.core.event.CollectEvent;
 import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
-/**
- * @author quchao
- * @date 2018/3/13
- */
 
 public class SearchListPresenter extends BasePresenter<SearchListContract.View> implements SearchListContract.Presenter {
 

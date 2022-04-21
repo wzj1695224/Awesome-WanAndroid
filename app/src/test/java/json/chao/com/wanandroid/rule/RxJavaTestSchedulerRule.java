@@ -8,10 +8,7 @@ import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.TestScheduler;
 
-/**
- * @author quchao
- * @date 2018/6/8
- */
+
 public class RxJavaTestSchedulerRule implements TestRule {
 
     private final TestScheduler mTestScheduler = new TestScheduler();

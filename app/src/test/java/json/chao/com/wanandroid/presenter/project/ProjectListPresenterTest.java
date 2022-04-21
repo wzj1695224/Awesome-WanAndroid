@@ -21,10 +21,7 @@ import json.chao.com.wanandroid.core.event.JumpToTheTopEvent;
 import json.chao.com.wanandroid.core.http.cookies.CookiesManager;
 
 
-/**
- * @author quchao
- * @date 2018/6/12
- */
+
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class ProjectListPresenterTest extends BasePresenterTest {

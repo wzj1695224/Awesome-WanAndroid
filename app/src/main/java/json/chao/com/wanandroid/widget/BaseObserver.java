@@ -17,21 +17,21 @@ public abstract class BaseObserver<T> extends ResourceObserver<T> {
     private String mErrorMsg;
     private boolean isShowError = true;
 
-    protected BaseObserver(AbstractView view){
+    protected BaseObserver(AbstractView view) {
         this.mView = view;
     }
 
-    protected BaseObserver(AbstractView view, String errorMsg){
+    protected BaseObserver(AbstractView view, String errorMsg) {
         this.mView = view;
         this.mErrorMsg = errorMsg;
     }
 
-    protected BaseObserver(AbstractView view, boolean isShowError){
+    protected BaseObserver(AbstractView view, boolean isShowError) {
         this.mView = view;
         this.isShowError = isShowError;
     }
 
-    protected BaseObserver(AbstractView view, String errorMsg, boolean isShowError){
+    protected BaseObserver(AbstractView view, String errorMsg, boolean isShowError) {
         this.mView = view;
         this.mErrorMsg = errorMsg;
         this.isShowError = isShowError;
@@ -52,7 +52,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<T> {
         } else if (e instanceof ServerException) {
             mView.showErrorMsg(e.toString());
         } else if (e instanceof HttpException) {
-                mView.showErrorMsg(WanAndroidApp.getInstance().getString(R.string.http_error));
+            mView.showErrorMsg(WanAndroidApp.getInstance().getString(R.string.http_error));
         } else {
             mView.showErrorMsg(WanAndroidApp.getInstance().getString(R.string.unKnown_error));
             LogHelper.d(e.toString());

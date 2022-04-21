@@ -34,10 +34,10 @@ import json.chao.com.wanandroid.utils.JudgeUtils;
 import json.chao.com.wanandroid.widget.CircularRevealAnim;
 
 
-public class UsageDialogFragment extends BaseDialogFragment<UsageDialogPresenter> implements
-        UsageDialogContract.View,
-        CircularRevealAnim.AnimListener,
-        ViewTreeObserver.OnPreDrawListener {
+public class UsageDialogFragment extends BaseDialogFragment<UsageDialogPresenter>
+        implements
+            UsageDialogContract.View,
+            ViewTreeObserver.OnPreDrawListener {
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -48,6 +48,14 @@ public class UsageDialogFragment extends BaseDialogFragment<UsageDialogPresenter
 
     private List<UsefulSiteData> mUsefulSiteDataList;
     private CircularRevealAnim mCircularRevealAnim;
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    DialogFragment
+    //
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,18 +69,85 @@ public class UsageDialogFragment extends BaseDialogFragment<UsageDialogPresenter
         initDialog();
     }
 
+    private void initDialog() {
+        // DialogSearch的宽
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = (int) (metrics.widthPixels * 0.98);
+
+        Window window = getDialog().getWindow();
+        assert window != null;
+        window.setLayout(width, WindowManager.LayoutParams.MATCH_PARENT);
+        window.setGravity(Gravity.TOP);
+        // 取消过渡动画 , 使DialogSearch的出现更加平滑
+        window.setWindowAnimations(R.style.DialogEmptyAnimation);
+    }
+
+    //
+    //    DialogFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleDialogFragment
+    //
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_usage;
     }
 
+
     @Override
     protected void initEventAndData() {
         initCircleAnimation();
         initToolbar();
+
         mUsefulSiteDataList = new ArrayList<>();
         mPresenter.getUsefulSites();
     }
+
+    private void initCircleAnimation() {
+        mCircularRevealAnim = new CircularRevealAnim();
+        mCircularRevealAnim.setAnimListener(new CircularRevealAnim.AnimListener() {
+            @Override
+            public void onHideAnimationEnd() {
+                dismissAllowingStateLoss();
+            }
+
+            @Override
+            public void onShowAnimationEnd() {}
+        });
+
+        mTitleTv.getViewTreeObserver().addOnPreDrawListener(this);
+    }
+
+    private void initToolbar() {
+        mTitleTv.setText(R.string.useful_sites);
+        if (mPresenter.getNightModeState()) {
+            setToolbarView(R.color.comment_text, R.color.colorCard, R.drawable.ic_arrow_back_white_24dp);
+        } else {
+            setToolbarView(R.color.title_black, R.color.white, R.drawable.ic_arrow_back_grey_24dp);
+        }
+        mToolbar.setNavigationOnClickListener(v -> mCircularRevealAnim.hide(mTitleTv, mRootView));
+    }
+
+    private void setToolbarView(@ColorRes int textColor, @ColorRes int backgroundColor, @DrawableRes int navigationIcon) {
+        mTitleTv.setTextColor(ContextCompat.getColor(getContext(), textColor));
+        mToolbar.setBackgroundColor(ContextCompat.getColor(getActivity(), backgroundColor));
+        mToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), navigationIcon));
+    }
+
+    //
+    //    AbstractSimpleDialogFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @Override
     public void showUsefulSites(List<UsefulSiteData> usefulSiteDataList) {
@@ -81,12 +156,13 @@ public class UsageDialogFragment extends BaseDialogFragment<UsageDialogPresenter
             @Override
             public View getView(FlowLayout parent, int position, UsefulSiteData usefulSiteData) {
                 assert getActivity() != null;
-                TextView tv = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.flow_layout_tv,
-                        parent, false);
                 assert usefulSiteData != null;
-                String name = usefulSiteData.getName();
-                tv.setText(name);
+
+                TextView tv = (TextView) LayoutInflater.from(getActivity())
+                        .inflate(R.layout.flow_layout_tv, parent, false);
+                tv.setText( usefulSiteData.getName() );
                 setItemBackground(tv);
+
                 mUsefulSitesFlowLayout.setOnTagClickListener((view, position1, parent1) -> {
                     startUsefulSitePager(view, position1);
                     return true;
@@ -96,14 +172,6 @@ public class UsageDialogFragment extends BaseDialogFragment<UsageDialogPresenter
         });
     }
 
-    @Override
-    public void onHideAnimationEnd() {
-        dismissAllowingStateLoss();
-    }
-
-    @Override
-    public void onShowAnimationEnd() {
-    }
 
     @Override
     public boolean onPreDraw() {
@@ -127,40 +195,6 @@ public class UsageDialogFragment extends BaseDialogFragment<UsageDialogPresenter
     private void setItemBackground(TextView tv) {
         tv.setBackgroundColor(CommonUtils.randomTagColor());
         tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-    }
-
-    private void initCircleAnimation() {
-        mCircularRevealAnim = new CircularRevealAnim();
-        mCircularRevealAnim.setAnimListener(this);
-        mTitleTv.getViewTreeObserver().addOnPreDrawListener(this);
-    }
-
-    private void initDialog() {
-        Window window = getDialog().getWindow();
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        //DialogSearch的宽
-        int width = (int) (metrics.widthPixels * 0.98);
-        assert window != null;
-        window.setLayout(width, WindowManager.LayoutParams.MATCH_PARENT);
-        window.setGravity(Gravity.TOP);
-        //取消过渡动画 , 使DialogSearch的出现更加平滑
-        window.setWindowAnimations(R.style.DialogEmptyAnimation);
-    }
-
-    private void initToolbar() {
-        mTitleTv.setText(R.string.useful_sites);
-        if (mPresenter.getNightModeState()) {
-            setToolbarView(R.color.comment_text, R.color.colorCard, R.drawable.ic_arrow_back_white_24dp);
-        } else {
-            setToolbarView(R.color.title_black, R.color.white, R.drawable.ic_arrow_back_grey_24dp);
-        }
-        mToolbar.setNavigationOnClickListener(v -> mCircularRevealAnim.hide(mTitleTv, mRootView));
-    }
-
-    private void setToolbarView(@ColorRes int textColor, @ColorRes int backgroundColor, @DrawableRes int navigationIcon) {
-        mTitleTv.setTextColor(ContextCompat.getColor(getContext(), textColor));
-        mToolbar.setBackgroundColor(ContextCompat.getColor(getActivity(), backgroundColor));
-        mToolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), navigationIcon));
     }
 
 }

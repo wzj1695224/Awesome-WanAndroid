@@ -3,11 +3,7 @@ package json.chao.com.wanandroid.base.view;
 
 /**
  *  View 基类
- *
- * @author quchao
- * @date 2017/11/27
  */
-
 public interface AbstractView {
 
     /**

@@ -2,6 +2,7 @@ package json.chao.com.wanandroid.performance.net;
 
 import android.text.TextUtils;
 
+
 public class OkHttpEvent {
 
     public long callStartTime;

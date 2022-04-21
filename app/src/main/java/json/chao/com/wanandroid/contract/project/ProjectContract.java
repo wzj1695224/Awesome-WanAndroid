@@ -7,7 +7,6 @@ import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.bean.project.ProjectClassifyData;
 
 
-
 public interface ProjectContract {
 
     interface View extends AbstractView {

@@ -15,21 +15,20 @@ import json.chao.com.wanandroid.base.presenter.AbstractPresenter;
 import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.utils.CommonUtils;
 
+
 /**
  * MVP模式的Base Activity
- *
- * @author quchao
- * @date 2017/11/28
  */
-
-public abstract class BaseActivity<T extends AbstractPresenter> extends AbstractSimpleActivity implements
-        HasSupportFragmentInjector,
-        AbstractView {
+@SuppressWarnings("rawtypes")
+public abstract class BaseActivity<T extends AbstractPresenter>
+        extends AbstractSimpleActivity
+        implements HasSupportFragmentInjector, AbstractView {
 
     @Inject
     DispatchingAndroidInjector<Fragment> mFragmentDispatchingAndroidInjector;
     @Inject
     protected T mPresenter;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

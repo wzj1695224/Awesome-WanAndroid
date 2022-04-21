@@ -9,10 +9,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import json.chao.com.wanandroid.R;
 
-/**
- * @author quchao
- * @date 2018/2/23
- */
 
 public class KnowledgeHierarchyViewHolder extends BaseViewHolder {
 

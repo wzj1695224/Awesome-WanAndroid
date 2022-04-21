@@ -14,10 +14,7 @@ import json.chao.com.wanandroid.BuildConfig;
 import json.chao.com.wanandroid.contract.main.UsageDialogContract;
 
 
-/**
- * @author quchao
- * @date 2018/6/12
- */
+
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class UsageDialogPresenterTest extends BasePresenterTest {

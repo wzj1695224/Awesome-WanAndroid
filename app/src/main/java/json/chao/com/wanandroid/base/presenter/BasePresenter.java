@@ -5,19 +5,16 @@ import io.reactivex.disposables.Disposable;
 import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.DataManager;
 
+
 /**
  * Base Presenter
  * 管理事件流订阅的生命周期
- *
- * @author quchao
- * @date 2017/11/28
  */
-
 public class BasePresenter<T extends AbstractView> implements AbstractPresenter<T> {
 
     protected T mView;
     private CompositeDisposable compositeDisposable;
-    private DataManager mDataManager;
+    private final DataManager mDataManager;
 
     public BasePresenter(DataManager dataManager) {
         this.mDataManager = dataManager;

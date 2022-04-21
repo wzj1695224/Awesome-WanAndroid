@@ -3,13 +3,10 @@ package json.chao.com.wanandroid.base.presenter;
 import io.reactivex.disposables.Disposable;
 import json.chao.com.wanandroid.base.view.AbstractView;
 
+
 /**
  * Presenter 基类
- *
- * @author quchao
- * @date 2017/11/27
  */
-
 public interface AbstractPresenter<T extends AbstractView> {
 
     /**

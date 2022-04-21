@@ -10,11 +10,6 @@ import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.base.presenter.BasePresenter;
 
 
-/**
- * @author quchao
- * @date 2018/3/30
- */
-
 public abstract class BaseRootFragment<T extends BasePresenter> extends BaseFragment<T> {
 
     private static final int NORMAL_STATE = 0;

@@ -7,7 +7,6 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 import json.chao.com.wanandroid.core.bean.project.ProjectListData;
 
 
-
 public interface ProjectListContract {
 
     interface View extends AbstractView {

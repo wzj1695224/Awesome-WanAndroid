@@ -6,10 +6,6 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 
 
-/**
- * @author quchao
- * @date 2018/10/31
- */
 public interface WxDetailContract {
 
     interface View extends AbstractView {

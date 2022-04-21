@@ -19,10 +19,7 @@ import json.chao.com.wanandroid.core.event.SwitchNavigationEvent;
 import json.chao.com.wanandroid.core.event.SwitchProjectEvent;
 
 
-/**
- * @author quchao
- * @date 2018/6/11
- */
+
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class MainPresenterTest extends BasePresenterTest{

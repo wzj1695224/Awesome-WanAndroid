@@ -41,10 +41,31 @@ public class KnowledgeHierarchyListFragment extends BaseRootFragment<KnowledgeHi
     private boolean isRefresh = true;
     private int articlePosition;
 
+
+
+
+    public static KnowledgeHierarchyListFragment getInstance(int id, String param2) {
+        KnowledgeHierarchyListFragment fragment = new KnowledgeHierarchyListFragment();
+        Bundle args = new Bundle();
+        args.putInt(Constants.ARG_PARAM1, id);
+        args.putString(Constants.ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_knowledge_hierarchy_list;
     }
+
 
     @Override
     protected void initView() {
@@ -52,23 +73,64 @@ public class KnowledgeHierarchyListFragment extends BaseRootFragment<KnowledgeHi
         initRecyclerView();
     }
 
+    private void initRecyclerView() {
+        mAdapter = new ArticleListAdapter(R.layout.item_search_pager, null);
+        mAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view, position));
+        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
         isInnerFragment = true;
-        setRefresh();
+        setupRefreshLayout();
+
         Bundle bundle = getArguments();
         id = bundle.getInt(Constants.ARG_PARAM1, 0);
         if (id == 0) {
             return;
         }
-        //重置当前页数，防止页面切换后当前页数为较大而加载后面的数据或没有数据
+
+        // 重置当前页数，防止页面切换后当前页数为较大而加载后面的数据或没有数据
         mCurrentPage = 0;
         mPresenter.getKnowledgeHierarchyDetailData(mCurrentPage, id, true);
         if (CommonUtils.isNetworkConnected()) {
             showLoading();
         }
     }
+
+    private void setupRefreshLayout() {
+        mRefreshLayout.setPrimaryColorsId(Constants.BLUE_THEME, R.color.white);
+        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
+            mCurrentPage = 0;
+            if (id != 0) {
+                isRefresh = true;
+                mPresenter.getKnowledgeHierarchyDetailData(0, id, false);
+            }
+            refreshLayout.finishRefresh(1000);
+        });
+        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            mCurrentPage++;
+            if (id != 0) {
+                isRefresh = false;
+                mPresenter.getKnowledgeHierarchyDetailData(mCurrentPage, id, false);
+            }
+            refreshLayout.finishLoadMore(1000);
+        });
+    }
+
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @Override
     public void showKnowledgeHierarchyDetailData(FeedArticleListData feedArticleListData) {
@@ -135,24 +197,6 @@ public class KnowledgeHierarchyListFragment extends BaseRootFragment<KnowledgeHi
         }
     }
 
-    public static KnowledgeHierarchyListFragment getInstance(int id, String param2) {
-        KnowledgeHierarchyListFragment fragment = new KnowledgeHierarchyListFragment();
-        Bundle args = new Bundle();
-        args.putInt(Constants.ARG_PARAM1, id);
-        args.putString(Constants.ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    private void initRecyclerView() {
-        mAdapter = new ArticleListAdapter(R.layout.item_search_pager, null);
-        mAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view, position));
-        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
     private void clickChildEvent(View view, int position) {
         switch (view.getId()) {
             case R.id.item_search_pager_chapterName:
@@ -212,23 +256,4 @@ public class KnowledgeHierarchyListFragment extends BaseRootFragment<KnowledgeHi
         }
     }
 
-    private void setRefresh() {
-        mRefreshLayout.setPrimaryColorsId(Constants.BLUE_THEME, R.color.white);
-        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
-            mCurrentPage = 0;
-            if (id != 0) {
-                isRefresh = true;
-                mPresenter.getKnowledgeHierarchyDetailData(0, id, false);
-            }
-            refreshLayout.finishRefresh(1000);
-        });
-        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
-            mCurrentPage++;
-            if (id != 0) {
-                isRefresh = false;
-                mPresenter.getKnowledgeHierarchyDetailData(mCurrentPage, id, false);
-            }
-            refreshLayout.finishLoadMore(1000);
-        });
-    }
 }

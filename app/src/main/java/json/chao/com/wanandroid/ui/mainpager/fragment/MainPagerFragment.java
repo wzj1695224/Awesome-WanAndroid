@@ -58,6 +58,26 @@ public class MainPagerFragment extends BaseRootFragment<MainPagerPresenter>
     private Banner mBanner;
     private boolean isRecreate;
 
+
+
+
+    public static MainPagerFragment getInstance(boolean param1, String param2) {
+        MainPagerFragment fragment = new MainPagerFragment();
+        Bundle args = new Bundle();
+        args.putBoolean(Constants.ARG_PARAM1, param1);
+        args.putString(Constants.ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    Fragment
+    //
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -80,19 +100,24 @@ public class MainPagerFragment extends BaseRootFragment<MainPagerPresenter>
         }
     }
 
-    public static MainPagerFragment getInstance(boolean param1, String param2) {
-        MainPagerFragment fragment = new MainPagerFragment();
-        Bundle args = new Bundle();
-        args.putBoolean(Constants.ARG_PARAM1, param1);
-        args.putString(Constants.ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    //
+    //    Fragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
 
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_main_pager;
     }
+
 
     @Override
     protected void initView() {
@@ -100,18 +125,52 @@ public class MainPagerFragment extends BaseRootFragment<MainPagerPresenter>
         initRecyclerView();
     }
 
+    private void initRecyclerView() {
+        {
+            LinearLayout mHeaderGroup = ((LinearLayout) LayoutInflater.from(_mActivity).inflate(R.layout.head_banner, null));
+            Banner banner = mHeaderGroup.findViewById(R.id.head_banner);
+            mHeaderGroup.removeView(banner);
+            mBanner = banner;
+        }
+
+        mFeedArticleDataList = new ArrayList<>();
+
+        mAdapter = new ArticleListAdapter(R.layout.item_search_pager, mFeedArticleDataList);
+        mAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view, position));
+        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
+        mAdapter.addHeaderView(mBanner);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
-        setRefresh();
+        setupRefreshLayout();
+
         if (loggedAndNotRebuilt()) {
             mPresenter.loadMainPagerData();
         } else {
             mPresenter.autoRefresh(true);
         }
+
         if (CommonUtils.isNetworkConnected()) {
             showLoading();
         }
+    }
+
+    private void setupRefreshLayout() {
+        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
+            mPresenter.autoRefresh(false);
+            refreshLayout.finishRefresh(1000);
+        });
+        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            mPresenter.loadMore();
+            refreshLayout.finishLoadMore(1000);
+        });
     }
 
     private boolean loggedAndNotRebuilt() {
@@ -120,20 +179,13 @@ public class MainPagerFragment extends BaseRootFragment<MainPagerPresenter>
                 && !isRecreate;
     }
 
-    private void initRecyclerView() {
-        mFeedArticleDataList = new ArrayList<>();
-        mAdapter = new ArticleListAdapter(R.layout.item_search_pager, mFeedArticleDataList);
-        mAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view, position));
-        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
-        mRecyclerView.setHasFixedSize(true);
-        //add head banner
-        LinearLayout mHeaderGroup = ((LinearLayout) LayoutInflater.from(_mActivity).inflate(R.layout.head_banner, null));
-        mBanner = mHeaderGroup.findViewById(R.id.head_banner);
-        mHeaderGroup.removeView(mBanner);
-        mAdapter.addHeaderView(mBanner);
-        mRecyclerView.setAdapter(mAdapter);
-    }
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     private void clickChildEvent(View view, int position) {
         switch (view.getId()) {
@@ -178,18 +230,29 @@ public class MainPagerFragment extends BaseRootFragment<MainPagerPresenter>
         if (mAdapter.getData().size() <= 0 || mAdapter.getData().size() < position) {
             return;
         }
-        //记录点击的文章位置，便于在文章内点击收藏返回到此界面时能展示正确的收藏状态
+        FeedArticleData article = mAdapter.getData().get(position);
+
+        // 记录点击的文章位置，便于在文章内点击收藏返回到此界面时能展示正确的收藏状态
         articlePosition = position;
+
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(_mActivity, view, getString(R.string.share_view));
         JudgeUtils.startArticleDetailActivity(_mActivity,
                 options,
-                mAdapter.getData().get(position).getId(),
-                mAdapter.getData().get(position).getTitle(),
-                mAdapter.getData().get(position).getLink(),
-                mAdapter.getData().get(position).isCollect(),
+                article.getId(),
+                article.getTitle(),
+                article.getLink(),
+                article.isCollect(),
                 false,
                 false);
     }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    View Contract
+    //
 
     @Override
     public void showAutoLoginSuccess() {
@@ -248,29 +311,31 @@ public class MainPagerFragment extends BaseRootFragment<MainPagerPresenter>
             bannerImageList.add(bannerData.getImagePath());
             mBannerUrlList.add(bannerData.getUrl());
         }
-        //设置banner样式
-        mBanner.setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE);
-        //设置图片加载器
-        mBanner.setImageLoader(new GlideImageLoader());
-        //设置图片集合
-        mBanner.setImages(bannerImageList);
-        //设置banner动画效果
-        mBanner.setBannerAnimation(Transformer.DepthPage);
-        //设置标题集合（当banner样式有显示title时）
-        mBanner.setBannerTitles(mBannerTitleList);
-        //设置自动轮播，默认为true
-        mBanner.isAutoPlay(true);
-        //设置轮播时间
-        mBanner.setDelayTime(bannerDataList.size() * 400);
-        //设置指示器位置（当banner模式中有指示器时）
-        mBanner.setIndicatorGravity(BannerConfig.CENTER);
+
+        mBanner.setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE);   // banner样式
+        mBanner.setImageLoader(new GlideImageLoader());             // 图片加载器
+        mBanner.setImages(bannerImageList);                         // 图片集合
+        mBanner.setBannerTitles(mBannerTitleList);                  // 标题集合（当banner样式有显示title时）
+        mBanner.setBannerAnimation(Transformer.DepthPage);          // banner动画效果
+        mBanner.isAutoPlay(true);                                   // 自动轮播，默认为true
+        mBanner.setDelayTime(bannerDataList.size() * 400);          // 轮播时间
+        mBanner.setIndicatorGravity(BannerConfig.CENTER);           // 指示器位置（当banner模式中有指示器时）
 
         mBanner.setOnBannerListener(i -> JudgeUtils.startArticleDetailActivity(_mActivity, null,
                 0, mBannerTitleList.get(i), mBannerUrlList.get(i),
                 false, false, true));
-        //banner设置方法全部调用完毕时最后调用
+
+        // banner设置方法全部调用完毕时最后调用
         mBanner.start();
     }
+
+    //
+    //    View Contract
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @Override
     public void showLoginView() {
@@ -339,14 +404,4 @@ public class MainPagerFragment extends BaseRootFragment<MainPagerPresenter>
         }
     }
 
-    private void setRefresh() {
-        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
-            mPresenter.autoRefresh(false);
-            refreshLayout.finishRefresh(1000);
-        });
-        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
-            mPresenter.loadMore();
-            refreshLayout.finishLoadMore(1000);
-        });
-    }
 }

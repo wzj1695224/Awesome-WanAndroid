@@ -1,6 +1,5 @@
 package json.chao.com.wanandroid.core.http.api;
 
-
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -23,10 +22,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-/**
- * @author quchao
- * @date 2018/2/12
- */
 
 public interface GeeksApis {
 

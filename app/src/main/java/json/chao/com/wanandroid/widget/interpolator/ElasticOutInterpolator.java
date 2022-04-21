@@ -2,10 +2,6 @@ package json.chao.com.wanandroid.widget.interpolator;
 
 import android.view.animation.Interpolator;
 
-/**
- * @author quchao
- * @date 2018/3/7
- */
 
 public class ElasticOutInterpolator implements Interpolator {
 

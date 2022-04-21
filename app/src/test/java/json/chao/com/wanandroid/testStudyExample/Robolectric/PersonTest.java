@@ -14,10 +14,7 @@ import org.robolectric.shadows.ShadowLog;
 import json.chao.com.wanandroid.BuildConfig;
 import json.chao.com.wanandroid.test.Person;
 
-/**
- * @author quchao
- * @date 2018/6/6
- */
+
 
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23, shadows = {ShadowPerson.class})

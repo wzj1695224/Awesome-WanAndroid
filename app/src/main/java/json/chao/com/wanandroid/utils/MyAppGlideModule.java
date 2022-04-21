@@ -11,10 +11,7 @@ import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.request.RequestOptions;
 
-/**
- * @author quchao
- * @date 2018/4/27
- */
+
 @GlideModule
 public class MyAppGlideModule extends AppGlideModule {
 

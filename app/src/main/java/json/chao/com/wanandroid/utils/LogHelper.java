@@ -7,12 +7,6 @@ import com.orhanobut.logger.Logger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * 日志工具类
- *
- * @author chao.qu
- * @date 2017/9/29
- */
 
 public class LogHelper {
 

@@ -12,7 +12,6 @@ import json.chao.com.wanandroid.ui.hierarchy.viewholder.KnowledgeHierarchyViewHo
 import json.chao.com.wanandroid.utils.CommonUtils;
 
 
-
 public class KnowledgeHierarchyAdapter extends BaseQuickAdapter<KnowledgeHierarchyData, KnowledgeHierarchyViewHolder> {
 
     public KnowledgeHierarchyAdapter(int layoutResId, @Nullable List<KnowledgeHierarchyData> data) {

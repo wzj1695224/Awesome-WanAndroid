@@ -30,10 +30,10 @@ import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.util.AttributeSet;
 import android.view.View;
 
+
 /**
  * FAB 行为控制器
-  */
-
+ */
 public class ScaleDownShowBehavior extends FloatingActionButton.Behavior {
 
     /**
@@ -46,9 +46,11 @@ public class ScaleDownShowBehavior extends FloatingActionButton.Behavior {
      */
     private boolean isShow = true;
 
+
     public ScaleDownShowBehavior(Context context, AttributeSet attrs) {
         super();
     }
+
 
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout,

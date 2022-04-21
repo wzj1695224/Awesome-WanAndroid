@@ -8,10 +8,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
-/**
- * @author quchao
- * @date 2018/6/21
- */
+
 public class RecyclerViewMatcher {
 
     private final int recyclerViewId;

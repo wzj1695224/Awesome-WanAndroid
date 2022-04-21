@@ -26,6 +26,7 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
+
 public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> implements MainPagerContract.Presenter {
 
     private DataManager mDataManager;
@@ -62,6 +63,7 @@ public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> im
                 .subscribe(loginEvent -> mView.showLogoutView()));
     }
 
+
     @Override
     public String getLoginAccount() {
         return mDataManager.getLoginAccount();
@@ -72,11 +74,13 @@ public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> im
         return mDataManager.getLoginPassword();
     }
 
+
     @Override
     public void loadMainPagerData() {
         Observable<BaseResponse<LoginData>> mLoginObservable = mDataManager.getLoginData(getLoginAccount(), getLoginPassword());
         Observable<BaseResponse<List<BannerData>>> mBannerObservable = mDataManager.getBannerData();
         Observable<BaseResponse<FeedArticleListData>> mArticleObservable = mDataManager.getFeedArticleList(0);
+
         addSubscribe(Observable.zip(mLoginObservable, mBannerObservable, mArticleObservable, this::createResponseMap)
                 .compose(RxUtils.rxSchedulerHelper())
                 .subscribeWith(new BaseObserver<HashMap<String, Object>>(mView) {
@@ -88,10 +92,12 @@ public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> im
                         } else {
                             mView.showAutoLoginFail();
                         }
+
                         BaseResponse<List<BannerData>> bannerResponse = CommonUtils.cast(map.get(Constants.BANNER_DATA));
                         if (bannerResponse != null) {
                             mView.showBannerData(bannerResponse.getData());
                         }
+
                         BaseResponse<FeedArticleListData> feedArticleListResponse = CommonUtils.cast(map.get(Constants.ARTICLE_DATA));
                         if (feedArticleListResponse != null) {
                             mView.showArticleList(feedArticleListResponse.getData(), isRefresh);
@@ -105,6 +111,7 @@ public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> im
                     }
                 }));
     }
+
 
     @Override
     public void autoRefresh(boolean isShowError) {

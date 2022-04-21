@@ -10,10 +10,7 @@ import json.chao.com.wanandroid.core.http.exception.ServerException;
 import json.chao.com.wanandroid.utils.LogHelper;
 import retrofit2.HttpException;
 
-/**
- * @author quchao
- * @date 2018/4/2
- */
+
 
 public abstract class BaseSubscribe <T> extends ResourceSubscriber<T> {
 

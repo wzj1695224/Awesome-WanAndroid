@@ -14,10 +14,7 @@ import json.chao.com.wanandroid.BuildConfig;
 import json.chao.com.wanandroid.contract.project.ProjectContract;
 
 
-/**
- * @author quchao
- * @date 2018/6/12
- */
+
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 23)
 public class ProjectPresenterTest extends BasePresenterTest {

@@ -1,9 +1,6 @@
 package json.chao.com.wanandroid.testStudyExample.JunitAndMockitoTestExample;
 
-/**
- * @author quchao
- * @date 2018/5/30
- */
+
 public interface Person {
 
     int getAge();

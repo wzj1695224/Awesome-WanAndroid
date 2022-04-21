@@ -15,10 +15,7 @@ import android.view.View;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 
-/**
- * @author quchao
- * @date 2018/6/21
- */
+
 public class TestUtils {
 
     public static String getToolBarNavigationContentDescription(@NonNull AppCompatActivity mActivity,

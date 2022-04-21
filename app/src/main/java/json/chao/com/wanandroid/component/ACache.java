@@ -35,6 +35,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import json.chao.com.wanandroid.app.Constants;
 
+
 /**
  * @author Michael Yang（www.yangfuhai.com） update at 2013.08.07
  */

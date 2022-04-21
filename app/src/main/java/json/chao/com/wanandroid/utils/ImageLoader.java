@@ -7,10 +7,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import json.chao.com.wanandroid.app.WanAndroidApp;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
 
 public class ImageLoader {
 

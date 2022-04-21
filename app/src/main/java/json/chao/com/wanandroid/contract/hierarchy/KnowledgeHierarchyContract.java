@@ -7,7 +7,6 @@ import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.bean.hierarchy.KnowledgeHierarchyData;
 
 
-
 public interface KnowledgeHierarchyContract {
 
     interface View extends AbstractView {

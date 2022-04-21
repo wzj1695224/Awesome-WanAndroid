@@ -4,10 +4,6 @@ import java.util.List;
 
 import json.chao.com.wanandroid.core.dao.HistoryData;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
 
 public interface DbHelper {
 

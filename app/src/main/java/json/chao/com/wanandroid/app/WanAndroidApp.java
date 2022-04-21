@@ -45,12 +45,12 @@ import json.chao.com.wanandroid.di.module.AppModule;
 import json.chao.com.wanandroid.di.module.HttpModule;
 import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.logger.TxtFormatStrategy;
+import json.chao.com.wanandroid.utils.simple.SimpleActivityLifecycleCallbacks;
 
 //import dagger.android.HasActivityInjector;
 
 
 public class WanAndroidApp extends Application implements HasActivityInjector {
-
     private static final String TAG = "WanAndroidApp";
 
     @Inject
@@ -62,18 +62,18 @@ public class WanAndroidApp extends Application implements HasActivityInjector {
     private static volatile AppComponent appComponent;
     private DaoSession mDaoSession;
 
-    //static 代码段可以防止内存泄露, 全局设置刷新头部及尾部，优先级最低
+
+    // static 代码段可以防止内存泄露, 全局设置刷新头部及尾部，优先级最低
     static {
-        AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
-            //全局设置主题颜色
+            // 全局设置主题颜色
             layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
-            //指定为Delivery Header，默认是贝塞尔雷达Header
+            // 指定为Delivery Header，默认是贝塞尔雷达Header
             return new DeliveryHeader(context);
         });
         SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> {
-            //默认是 BallPulseFooter
+            // 默认是 BallPulseFooter
             return new BallPulseFooter(context).setAnimatingColor(ContextCompat.getColor(context, R.color.colorPrimary));
         });
     }
@@ -170,39 +170,11 @@ public class WanAndroidApp extends Application implements HasActivityInjector {
 //            e.printStackTrace();
 //        }
 
-        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+        registerActivityLifecycleCallbacks(new SimpleActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 // 全局监控FPS值变化，可带到线上使用
-//                getFPS();
-            }
-
-            @Override
-            public void onActivityStarted(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityResumed(Activity activity) {
-            }
-
-            @Override
-            public void onActivityPaused(Activity activity) {
-            }
-
-            @Override
-            public void onActivityStopped(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
-            }
-
-            @Override
-            public void onActivityDestroyed(Activity activity) {
-
+                getFPS();
             }
         });
     }

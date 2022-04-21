@@ -25,7 +25,6 @@ import q.rorbin.verticaltablayout.widget.ITabView;
 import q.rorbin.verticaltablayout.widget.TabView;
 
 
-
 public class NavigationFragment extends BaseRootFragment<NavigationPresenter> implements NavigationContract.View {
 
     @BindView(R.id.navigation_tab_layout)
@@ -43,6 +42,9 @@ public class NavigationFragment extends BaseRootFragment<NavigationPresenter> im
     private boolean isClickTab;
     private NavigationAdapter mNavigationAdapter;
 
+
+
+
     public static NavigationFragment getInstance(String param1, String param2) {
         NavigationFragment fragment = new NavigationFragment();
         Bundle args = new Bundle();
@@ -52,19 +54,56 @@ public class NavigationFragment extends BaseRootFragment<NavigationPresenter> im
         return fragment;
     }
 
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_navigation;
     }
 
+
+    @Override
+    protected void initView() {
+        super.initView();
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+        List<NavigationListData> navigationDataList = new ArrayList<>();
+        mNavigationAdapter = new NavigationAdapter(R.layout.item_navigation, navigationDataList);
+
+        mManager = new LinearLayoutManager(_mActivity);
+
+        mRecyclerView.setLayoutManager(mManager);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setAdapter(mNavigationAdapter);
+    }
+
+
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
+
         mPresenter.getNavigationListData(true);
+
         if (CommonUtils.isNetworkConnected()) {
             showLoading();
         }
     }
+
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @Override
     public void showNavigationListData(List<NavigationListData> navigationDataList) {
@@ -98,11 +137,13 @@ public class NavigationFragment extends BaseRootFragment<NavigationPresenter> im
                 return -1;
             }
         });
+
         if (mPresenter.getCurrentPage() == Constants.TYPE_NAVIGATION) {
             setChildViewVisibility(View.VISIBLE);
         } else {
             setChildViewVisibility(View.INVISIBLE);
         }
+
         mNavigationAdapter.replaceData(navigationDataList);
         leftRightLinkage();
         showNormal();
@@ -121,21 +162,6 @@ public class NavigationFragment extends BaseRootFragment<NavigationPresenter> im
         if (mPresenter != null && mNavigationGroup.getVisibility() == View.INVISIBLE) {
             mPresenter.getNavigationListData(false);
         }
-    }
-
-    @Override
-    protected void initView() {
-        super.initView();
-        initRecyclerView();
-    }
-
-    private void initRecyclerView() {
-        List<NavigationListData> navigationDataList = new ArrayList<>();
-        mNavigationAdapter = new NavigationAdapter(R.layout.item_navigation, navigationDataList);
-        mManager = new LinearLayoutManager(_mActivity);
-        mRecyclerView.setLayoutManager(mManager);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setAdapter(mNavigationAdapter);
     }
 
     /**

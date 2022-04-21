@@ -6,7 +6,6 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 
 
-
 public interface KnowledgeHierarchyListContract {
 
     interface View extends AbstractView {

@@ -1,9 +1,6 @@
 package json.chao.com.wanandroid.core.bean.wx;
 
-/**
- * @author quchao
- * @date 2018/10/31
- */
+
 public class WxAuthor {
 
     /**

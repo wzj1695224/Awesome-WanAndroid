@@ -14,10 +14,7 @@ import android.widget.Toast;
 import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.ui.main.activity.AboutUsActivity;
 
-/**
- * @author quchao
- * @date 2018/6/6
- */
+
 public class TestActivity extends AppCompatActivity {
 
     private CheckBox mCheckBox;

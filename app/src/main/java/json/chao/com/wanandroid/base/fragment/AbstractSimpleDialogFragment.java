@@ -52,7 +52,7 @@ public abstract class AbstractSimpleDialogFragment extends DialogFragment {
     @Override
     public void show(FragmentManager manager, String tag) {
         try {
-            //防止连续点击add多个fragment
+            // 防止连续点击add多个fragment
             manager.beginTransaction().remove(this).commit();
             super.show(manager, tag);
         } catch (Exception e) {

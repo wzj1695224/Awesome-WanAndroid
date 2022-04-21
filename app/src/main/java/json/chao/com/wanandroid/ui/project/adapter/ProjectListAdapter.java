@@ -13,6 +13,7 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.ui.project.viewholder.ProjectListViewHolder;
 import json.chao.com.wanandroid.utils.ImageLoader;
 
+
 public class ProjectListAdapter extends BaseQuickAdapter<FeedArticleData, ProjectListViewHolder> {
 
     public ProjectListAdapter(int layoutResId, @Nullable List<FeedArticleData> data) {

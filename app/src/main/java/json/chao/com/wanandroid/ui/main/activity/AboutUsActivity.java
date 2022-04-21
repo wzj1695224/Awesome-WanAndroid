@@ -58,14 +58,21 @@ public class AboutUsActivity extends AbstractSimpleActivity {
 
     private View.OnClickListener mThemeListener;
 
-    @Override
-    protected void onViewCreated() {
-    }
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleActivity
+    //
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_about_us;
     }
+
+    @Override
+    protected void onViewCreated() {}
 
     @Override
     protected void initToolbar() {
@@ -80,13 +87,13 @@ public class AboutUsActivity extends AbstractSimpleActivity {
         showAboutContent();
         setSmartRefreshLayout();
 
-        //进入界面时自动刷新
+        // 进入界面时自动刷新
         mAboutUsRefreshLayout.autoRefresh();
 
-        //点击悬浮按钮时自动刷新
+        // 点击悬浮按钮时自动刷新
         mAboutUsFab.setOnClickListener(v -> mAboutUsRefreshLayout.autoRefresh());
 
-        //监听 AppBarLayout 的关闭和开启 给 FlyView（纸飞机） 和 ActionButton 设置关闭隐藏动画
+        // 监听 AppBarLayout 的关闭和开启 给 FlyView（纸飞机） 和 ActionButton 设置关闭隐藏动画
         mAboutUsAppBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean misAppbarExpand = true;
 
@@ -129,9 +136,23 @@ public class AboutUsActivity extends AbstractSimpleActivity {
         });
     }
 
+    private void showAboutContent() {
+        mAboutContent.setText(Html.fromHtml(getString(R.string.about_content)));
+        mAboutContent.setMovementMethod(LinkMovementMethod.getInstance());
+
+        try {
+            String versionStr = getString(R.string.awesome_wan_android)
+                    + " V" + getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            mAboutVersion.setText(versionStr);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void setSmartRefreshLayout() {
-        //绑定场景和纸飞机
+        // 绑定场景和纸飞机
         mFlyRefreshHeader.setUp(mAboutUsMountain, mAboutUsFlyView);
+
         mAboutUsRefreshLayout.setReboundInterpolator(new ElasticOutInterpolator());
         mAboutUsRefreshLayout.setReboundDuration(800);
         mAboutUsRefreshLayout.setOnRefreshListener(refreshLayout -> {
@@ -139,7 +160,7 @@ public class AboutUsActivity extends AbstractSimpleActivity {
             refreshLayout.finishRefresh(1000);
         });
 
-        //设置让Toolbar和AppBarLayout的滚动同步
+        // 设置让Toolbar和AppBarLayout的滚动同步
         mAboutUsRefreshLayout.setOnMultiPurposeListener(new SimpleMultiPurposeListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
@@ -165,18 +186,6 @@ public class AboutUsActivity extends AbstractSimpleActivity {
         });
     }
 
-    private void showAboutContent() {
-        mAboutContent.setText(Html.fromHtml(getString(R.string.about_content)));
-        mAboutContent.setMovementMethod(LinkMovementMethod.getInstance());
-        try {
-            String versionStr = getString(R.string.awesome_wan_android)
-                    + " V" + getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-            mAboutVersion.setText(versionStr);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * Update appbar theme
      */
@@ -184,7 +193,7 @@ public class AboutUsActivity extends AbstractSimpleActivity {
         if (mThemeListener == null) {
             mThemeListener = new View.OnClickListener() {
                 int index = 0;
-                int[] ids = new int[]{
+                final int[] ids = new int[]{
                         R.color.colorPrimary,
                         android.R.color.holo_green_light,
                         android.R.color.holo_red_light,
@@ -195,9 +204,9 @@ public class AboutUsActivity extends AbstractSimpleActivity {
                 @Override
                 public void onClick(View v) {
                     int color = ContextCompat.getColor(getApplication(), ids[index % ids.length]);
-                    mAboutUsRefreshLayout.setPrimaryColors(color);
                     mAboutUsFab.setBackgroundColor(color);
                     mAboutUsFab.setBackgroundTintList(ColorStateList.valueOf(color));
+                    mAboutUsRefreshLayout.setPrimaryColors(color);
                     mAboutUsToolbarLayout.setContentScrimColor(color);
                     index++;
                 }
@@ -205,5 +214,12 @@ public class AboutUsActivity extends AbstractSimpleActivity {
         }
         mThemeListener.onClick(null);
     }
+
+    //
+    //    AbstractSimpleActivity
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
 
 }

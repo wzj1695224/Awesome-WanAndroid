@@ -18,10 +18,7 @@ import json.chao.com.wanandroid.rule.MyRuler;
 import json.chao.com.wanandroid.rule.RxJavaRuler;
 import json.chao.com.wanandroid.rule.RxJavaTestSchedulerRule;
 
-/**
- * @author quchao
- * @date 2018/6/11
- */
+
 public class BasePresenterTest {
 
     @Rule

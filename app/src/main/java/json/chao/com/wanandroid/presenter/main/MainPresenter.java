@@ -20,10 +20,9 @@ import json.chao.com.wanandroid.widget.BaseObserver;
 import json.chao.com.wanandroid.widget.BaseSubscribe;
 
 
-
 public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
 
-    private DataManager mDataManager;
+    private final DataManager mDataManager;
 
     @Inject
     MainPresenter(DataManager dataManager) {
@@ -31,11 +30,13 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
         this.mDataManager = dataManager;
     }
 
+
     @Override
     public void attachView(MainContract.View view) {
         super.attachView(view);
         registerEvent();
     }
+
 
     private void registerEvent() {
         addSubscribe(RxBus.getDefault().toFlowable(NightModeEvent.class)
@@ -73,6 +74,7 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
                 .subscribe(switchNavigationEvent -> mView.showSwitchNavigation()));
     }
 
+
     @Override
     public void logout() {
         addSubscribe(mDataManager.logout()
@@ -92,10 +94,12 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
                 }));
     }
 
+
     @Override
     public void setCurrentPage(int page) {
         mDataManager.setCurrentPage(page);
     }
+
 
     @Override
     public void setNightModeState(boolean b) {

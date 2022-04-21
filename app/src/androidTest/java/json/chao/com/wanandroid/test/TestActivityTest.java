@@ -17,10 +17,7 @@ import org.junit.runner.RunWith;
 import json.chao.com.wanandroid.R;
 
 
-/**
- * @author quchao
- * @date 2018/6/7
- */
+
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest

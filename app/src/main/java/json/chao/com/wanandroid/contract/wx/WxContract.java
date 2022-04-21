@@ -7,10 +7,6 @@ import json.chao.com.wanandroid.base.view.AbstractView;
 import json.chao.com.wanandroid.core.bean.wx.WxAuthor;
 
 
-/**
- * @author quchao
- * @date 2018/10/31
- */
 public interface WxContract {
 
     interface View extends AbstractView {
@@ -21,7 +17,6 @@ public interface WxContract {
          * @param wxAuthors 公众号作者列表
          */
         void showWxAuthorListView(List<WxAuthor> wxAuthors);
-
 
     }
 

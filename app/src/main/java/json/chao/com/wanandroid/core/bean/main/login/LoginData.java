@@ -2,10 +2,6 @@ package json.chao.com.wanandroid.core.bean.main.login;
 
 import java.util.List;
 
-/**
- * @author quchao
- * @date 2018/2/26
- */
 
 public class LoginData {
 

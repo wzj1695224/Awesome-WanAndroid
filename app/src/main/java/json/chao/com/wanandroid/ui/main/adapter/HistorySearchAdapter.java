@@ -11,10 +11,6 @@ import json.chao.com.wanandroid.core.dao.HistoryData;
 import json.chao.com.wanandroid.ui.main.viewholder.SearchHistoryViewHolder;
 import json.chao.com.wanandroid.utils.CommonUtils;
 
-/**
- * @author quchao
- * @date 2018/3/23
- */
 
 public class HistorySearchAdapter extends BaseQuickAdapter<HistoryData, SearchHistoryViewHolder> {
 

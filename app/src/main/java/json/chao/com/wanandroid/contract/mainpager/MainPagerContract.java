@@ -9,7 +9,6 @@ import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleListData;
 
 
-
 public interface MainPagerContract {
 
     interface View extends AbstractView {

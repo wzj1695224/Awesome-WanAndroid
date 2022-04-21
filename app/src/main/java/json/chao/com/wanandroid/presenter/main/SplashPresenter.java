@@ -11,18 +11,18 @@ import json.chao.com.wanandroid.contract.main.SplashContract;
 import json.chao.com.wanandroid.core.DataManager;
 
 
-
 public class SplashPresenter extends BasePresenter<SplashContract.View> implements SplashContract.Presenter {
-
 
     @Inject
     SplashPresenter(DataManager dataManager) {
         super(dataManager);
     }
 
+
     @Override
     public void attachView(SplashContract.View view) {
         super.attachView(view);
+
         long splashTime = 2000;
         addSubscribe(Observable.timer(splashTime, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())

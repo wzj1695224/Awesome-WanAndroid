@@ -6,14 +6,7 @@ import android.os.MessageQueue;
 import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.ReflectUtils;
 
-/**
- * Copyright (C), 2020
- * FileName: UiUtils
- * Date: 2020-01-07 17:53
- * Description: 用于Ui优化的工具类
- *
- * @author quchao
- */
+
 public class UiUtils {
 
     /**

@@ -7,10 +7,6 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-/**
- * @author chao.qu
- * @date 2018/2/11
- */
 
 public class BottomNavigationBehavior extends CoordinatorLayout.Behavior<View> {
 

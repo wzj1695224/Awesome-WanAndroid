@@ -61,10 +61,8 @@ public class WxDetailArticleFragment extends BaseRootFragment<WxDetailArticlePre
     private boolean isSearchStatus;
     private String searchString;
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_wx_detail_article;
-    }
+
+
 
     public static WxDetailArticleFragment getInstance(int param1, String param2) {
         WxDetailArticleFragment fragment = new WxDetailArticleFragment();
@@ -75,35 +73,59 @@ public class WxDetailArticleFragment extends BaseRootFragment<WxDetailArticlePre
         return fragment;
     }
 
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_wx_detail_article;
+    }
+
+
     @Override
     protected void initView() {
         super.initView();
         initRecyclerView();
     }
 
+    private void initRecyclerView() {
+        mAdapter = new ArticleListAdapter(R.layout.item_search_pager, null);
+        mAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view, position));
+        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
+
         isSearchStatus = false;
-        setRefresh();
+        setupRefreshLayout();
+
         Bundle bundle = getArguments();
         id = bundle.getInt(Constants.ARG_PARAM1, 0);
         if (id == 0) {
             return;
         }
         mAuthor = bundle.getString(Constants.ARG_PARAM2, "");
+
         initToolbar();
 
         mSearchEdit.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -126,13 +148,51 @@ public class WxDetailArticleFragment extends BaseRootFragment<WxDetailArticlePre
                     mPresenter.getWxSearchSumData(id, mCurrentPage, mSearchEdit.getText().toString());
                 }));
 
-        //重置当前页数，防止页面切换后当前页数为较大而加载后面的数据或没有数据
+        // 重置当前页数，防止页面切换后当前页数为较大而加载后面的数据或没有数据
         mCurrentPage = 1;
         mPresenter.getWxDetailData(id, mCurrentPage, true);
         if (CommonUtils.isNetworkConnected()) {
             showLoading();
         }
     }
+
+    private void setupRefreshLayout() {
+        mRefreshLayout.setPrimaryColorsId(Constants.BLUE_THEME, R.color.white);
+        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
+            mCurrentPage = 1;
+            if (id != 0) {
+                isRefresh = true;
+                mPresenter.getWxDetailData(id, 0, false);
+            }
+            refreshLayout.finishRefresh(1000);
+        });
+        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            mCurrentPage++;
+            if (id != 0) {
+                isRefresh = false;
+                if (isSearchStatus) {
+                    mPresenter.getWxSearchSumData(id, mCurrentPage, searchString);
+                } else {
+                    mPresenter.getWxDetailData(id, mCurrentPage, false);
+                }
+            }
+            refreshLayout.finishLoadMore(1000);
+        });
+    }
+
+    private void initToolbar() {
+        mBackIb.setVisibility(View.GONE);
+        tint = mAuthor + "带你" + getString(R.string.search_tint);
+        mTintTv.setText(tint);
+    }
+
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @Override
     public void showWxSearchView(FeedArticleListData wxSearchData) {
@@ -213,21 +273,6 @@ public class WxDetailArticleFragment extends BaseRootFragment<WxDetailArticlePre
         }
     }
 
-    private void initToolbar() {
-        mBackIb.setVisibility(View.GONE);
-        tint = mAuthor + "带你" + getString(R.string.search_tint);
-        mTintTv.setText(tint);
-    }
-
-    private void initRecyclerView() {
-        mAdapter = new ArticleListAdapter(R.layout.item_search_pager, null);
-        mAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view, position));
-        mAdapter.setOnItemChildClickListener((adapter, view, position) -> clickChildEvent(view, position));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
     private void clickChildEvent(View view, int position) {
         switch (view.getId()) {
             case R.id.item_search_pager_chapterName:
@@ -297,30 +342,6 @@ public class WxDetailArticleFragment extends BaseRootFragment<WxDetailArticlePre
         } else {
             mPresenter.addCollectArticle(position, mAdapter.getData().get(position));
         }
-    }
-
-    private void setRefresh() {
-        mRefreshLayout.setPrimaryColorsId(Constants.BLUE_THEME, R.color.white);
-        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
-            mCurrentPage = 1;
-            if (id != 0) {
-                isRefresh = true;
-                mPresenter.getWxDetailData(id, 0, false);
-            }
-            refreshLayout.finishRefresh(1000);
-        });
-        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
-            mCurrentPage++;
-            if (id != 0) {
-                isRefresh = false;
-                if (isSearchStatus) {
-                    mPresenter.getWxSearchSumData(id, mCurrentPage, searchString);
-                } else {
-                    mPresenter.getWxDetailData(id, mCurrentPage, false);
-                }
-            }
-            refreshLayout.finishLoadMore(1000);
-        });
     }
 
 }

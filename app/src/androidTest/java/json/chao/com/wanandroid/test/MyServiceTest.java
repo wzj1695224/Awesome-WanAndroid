@@ -14,10 +14,6 @@ import org.junit.runner.RunWith;
 import java.util.concurrent.TimeoutException;
 
 
-/**
- * @author quchao
- * @date 2018/6/13
- */
 @RunWith(AndroidJUnit4.class)
 @MediumTest
 public class MyServiceTest {

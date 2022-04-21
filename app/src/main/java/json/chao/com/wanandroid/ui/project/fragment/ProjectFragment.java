@@ -24,7 +24,6 @@ import json.chao.com.wanandroid.presenter.project.ProjectPresenter;
 import json.chao.com.wanandroid.utils.CommonUtils;
 
 
-
 public class ProjectFragment extends BaseRootFragment<ProjectPresenter> implements ProjectContract.View {
 
     @BindView(R.id.project_tab_layout)
@@ -38,13 +37,8 @@ public class ProjectFragment extends BaseRootFragment<ProjectPresenter> implemen
     private List<BaseFragment> mFragments = new ArrayList<>();
     private int currentPage;
 
-    @Override
-    public void onDestroyView() {
-        if (mPresenter != null) {
-            mPresenter.setProjectCurrentPage(currentPage);
-        }
-        super.onDestroyView();
-    }
+
+
 
     public static ProjectFragment getInstance(String param1, String param2) {
         ProjectFragment fragment = new ProjectFragment();
@@ -55,6 +49,35 @@ public class ProjectFragment extends BaseRootFragment<ProjectPresenter> implemen
         return fragment;
     }
 
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    Fragment
+    //
+
+    @Override
+    public void onDestroyView() {
+        if (mPresenter != null) {
+            mPresenter.setProjectCurrentPage(currentPage);
+        }
+        super.onDestroyView();
+    }
+
+    //
+    //    Fragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleFragment
+    //
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_project;
@@ -63,12 +86,22 @@ public class ProjectFragment extends BaseRootFragment<ProjectPresenter> implemen
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
+
         mPresenter.getProjectClassifyData();
         currentPage = mPresenter.getProjectCurrentPage();
+
         if (CommonUtils.isNetworkConnected()) {
             showLoading();
         }
     }
+
+    //
+    //    AbstractSimpleFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     @Override
     public void showProjectClassifyData(List<ProjectClassifyData> projectClassifyDataList) {

@@ -39,10 +39,11 @@ public class SearchPresenter extends BasePresenter<SearchContract.View> implemen
 
     @Override
     public void addHistoryData(String data) {
-        addSubscribe(Observable.create((ObservableOnSubscribe<List<HistoryData>>) e -> {
-                List<HistoryData> historyDataList = mDataManager.addHistoryData(data);
-                e.onNext(historyDataList);
-        })
+        addSubscribe(Observable.create(
+                (ObservableOnSubscribe<List<HistoryData>>) e -> {
+                    List<HistoryData> historyDataList = mDataManager.addHistoryData(data);
+                    e.onNext(historyDataList);
+                })
                 .compose(RxUtils.rxSchedulerHelper())
                 .subscribe(historyDataList ->
                 mView.judgeToTheSearchListActivity()));

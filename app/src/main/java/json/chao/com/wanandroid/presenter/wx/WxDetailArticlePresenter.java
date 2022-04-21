@@ -16,10 +16,6 @@ import json.chao.com.wanandroid.utils.RxUtils;
 import json.chao.com.wanandroid.widget.BaseObserver;
 
 
-/**
- * @author quchao
- * @date 2018/10/31
- */
 public class WxDetailArticlePresenter extends BasePresenter<WxDetailContract.View> implements WxDetailContract.Presenter {
 
     private DataManager mDataManager;

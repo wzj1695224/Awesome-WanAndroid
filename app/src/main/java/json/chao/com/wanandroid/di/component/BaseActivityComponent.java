@@ -5,10 +5,7 @@ import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 import json.chao.com.wanandroid.base.activity.BaseActivity;
 
-/**
- * @author quchao
- * @date 2018/5/3
- */
+
 
 @Subcomponent(modules = {AndroidInjectionModule.class})
 public interface BaseActivityComponent extends AndroidInjector<BaseActivity> {

@@ -19,12 +19,7 @@ import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * FileName: OkHttpEventListener
- * Date: 2020/5/8 16:28
- * Description: OkHttp 网络请求质量监控
- * @author quchao
- */
+
 public class OkHttpEventListener extends EventListener {
 
     public static final Factory FACTORY = new Factory() {

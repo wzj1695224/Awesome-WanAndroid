@@ -13,7 +13,6 @@ import json.chao.com.wanandroid.presenter.main.SplashPresenter;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 
 
-
 public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashContract.View {
 
     @BindView(R.id.one_animation)
@@ -37,11 +36,13 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     @BindView(R.id.ten_animation)
     LottieAnimationView mTenAnimation;
 
-    @Override
-    protected void onDestroy() {
-        cancelAnimation();
-        super.onDestroy();
-    }
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    Lifecycle
+    //
 
     @Override
     protected int getLayoutId() {
@@ -60,6 +61,34 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
     @Override
     protected void initEventAndData() {
+        startAnimations();
+    }
+
+    @Override
+    protected void onDestroy() {
+        cancelAnimations();
+        super.onDestroy();
+    }
+
+    //
+    //    Lifecycle
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    @Override
+    public void jumpToMain() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+
+
+
+    private void startAnimations() {
         startAnimation(mOneAnimation, "W.json");
         startAnimation(mTwoAnimation, "A.json");
         startAnimation(mThreeAnimation, "N.json");
@@ -72,31 +101,25 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
         startAnimation(mTenAnimation, "D.json");
     }
 
-    @Override
-    public void jumpToMain() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    private void cancelAnimations() {
+        cancelAnimation(mOneAnimation);
+        cancelAnimation(mTwoAnimation);
+        cancelAnimation(mThreeAnimation);
+        cancelAnimation(mFourAnimation);
+        cancelAnimation(mFiveAnimation);
+        cancelAnimation(mSixAnimation);
+        cancelAnimation(mSevenAnimation);
+        cancelAnimation(mEightAnimation);
+        cancelAnimation(mNineAnimation);
+        cancelAnimation(mTenAnimation);
     }
 
-    private void cancelAnimation() {
-      cancelAnimation(mOneAnimation);
-      cancelAnimation(mTwoAnimation);
-      cancelAnimation(mThreeAnimation);
-      cancelAnimation(mFourAnimation);
-      cancelAnimation(mFiveAnimation);
-      cancelAnimation(mSixAnimation);
-      cancelAnimation(mSevenAnimation);
-      cancelAnimation(mEightAnimation);
-
-      cancelAnimation(mNineAnimation);
-      cancelAnimation(mTenAnimation);
-    }
 
     private void startAnimation(LottieAnimationView mLottieAnimationView, String animationName) {
         mLottieAnimationView.setAnimation(animationName);
         mLottieAnimationView.playAnimation();
     }
+
     private void cancelAnimation(LottieAnimationView mLottieAnimationView) {
         if (mLottieAnimationView != null) {
             mLottieAnimationView.cancelAnimation();

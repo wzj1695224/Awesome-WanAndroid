@@ -20,6 +20,7 @@ public abstract class AbstractSimpleActivity extends SupportActivity {
     private Unbinder unBinder;
     protected AbstractSimpleActivity mActivity;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public abstract class AbstractSimpleActivity extends SupportActivity {
         initEventAndData();
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -42,22 +44,23 @@ public abstract class AbstractSimpleActivity extends SupportActivity {
         }
     }
 
+
     @VisibleForTesting
     public IdlingResource getCountingIdlingResource() {
         return EspressoIdlingResource.getIdlingResource();
     }
 
+
+    /**
+     * 获取当前Activity的UI布局
+     */
+    protected abstract int getLayoutId();
+
+
     /**
      * 在initEventAndData()之前执行
      */
     protected abstract void onViewCreated();
-
-    /**
-     * 获取当前Activity的UI布局
-     *
-     * @return 布局id
-     */
-    protected abstract int getLayoutId();
 
     /**
      * 初始化ToolBar

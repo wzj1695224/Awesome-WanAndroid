@@ -22,7 +22,6 @@ import json.chao.com.wanandroid.utils.CommonUtils;
 import json.chao.com.wanandroid.utils.StatusBarUtil;
 
 
-
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterContract.View {
 
     @BindView(R.id.common_toolbar)

@@ -1,5 +1,6 @@
 package json.chao.com.wanandroid.aop;
 
+
 public class ActivityRecord {
 
     /**

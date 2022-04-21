@@ -8,6 +8,7 @@ import me.ele.lancet.base.Scope;
 import me.ele.lancet.base.annotations.Insert;
 import me.ele.lancet.base.annotations.TargetClass;
 
+
 public class ActivityHooker {
 
     public static ActivityRecord sActivityRecord;

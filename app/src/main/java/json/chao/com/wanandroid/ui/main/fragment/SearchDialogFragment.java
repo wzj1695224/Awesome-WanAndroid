@@ -51,7 +51,6 @@ import json.chao.com.wanandroid.utils.KeyBoardUtils;
 import json.chao.com.wanandroid.widget.CircularRevealAnim;
 
 
-
 public class SearchDialogFragment extends BaseDialogFragment<SearchPresenter> implements
         SearchContract.View,
         CircularRevealAnim.AnimListener,
@@ -82,6 +81,14 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchPresenter> im
     private CircularRevealAnim mCircularRevealAnim;
     private HistorySearchAdapter historySearchAdapter;
 
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    DialogFragment
+    //
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,26 +101,51 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchPresenter> im
         initDialog();
     }
 
+    private void initDialog() {
+        // DialogSearch的宽
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = (int) (metrics.widthPixels * 0.98);
+
+        Window window = getDialog().getWindow();
+        assert window != null;
+        window.setLayout(width, WindowManager.LayoutParams.MATCH_PARENT);
+        window.setGravity(Gravity.TOP);
+        // 取消过渡动画 , 使DialogSearch的出现更加平滑
+        window.setWindowAnimations(R.style.DialogEmptyAnimation);
+    }
+
+    //
+    //    DialogFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //
+    //    AbstractSimpleDialogFragment
+    //
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_search;
     }
 
+
     @Override
     protected void initEventAndData() {
         initCircleAnimation();
         initRecyclerView();
+
         mTopSearchDataList = new ArrayList<>();
+
         mSearchEdit.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -124,6 +156,7 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchPresenter> im
                 }
             }
         });
+
         mPresenter.addRxBindingSubscribe(RxView.clicks(mSearchTv)
                 .throttleFirst(Constants.CLICK_TIME_AREA, TimeUnit.MILLISECONDS)
                 .filter(o -> !TextUtils.isEmpty(mSearchEdit.getText().toString().trim()))
@@ -133,8 +166,28 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchPresenter> im
                 }));
 
         showHistoryData(mPresenter.loadAllHistoryData());
+
         mPresenter.getTopSearchData();
     }
+
+    private void initCircleAnimation() {
+        mCircularRevealAnim = new CircularRevealAnim();
+        mCircularRevealAnim.setAnimListener(this);
+        mSearchEdit.getViewTreeObserver().addOnPreDrawListener(this);
+    }
+
+    private void initRecyclerView() {
+        historySearchAdapter = new HistorySearchAdapter(R.layout.item_search_history, null);
+        historySearchAdapter.setOnItemChildClickListener((adapter, view, position) -> searchHistoryData(adapter, position));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(historySearchAdapter);
+    }
+
+    //
+    //    AbstractSimpleDialogFragment
+    //
+    /////////////////////////////////////////////////////////////////////////////////
+
 
     @Override
     public void showHistoryData(List<HistoryData> historyDataList) {
@@ -223,13 +276,6 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchPresenter> im
         mSearchEdit.setSelection(mSearchEdit.getText().length());
     }
 
-    private void initRecyclerView() {
-        historySearchAdapter = new HistorySearchAdapter(R.layout.item_search_history, null);
-        historySearchAdapter.setOnItemChildClickListener((adapter, view, position) -> searchHistoryData(adapter, position));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(historySearchAdapter);
-    }
-
     private void searchHistoryData(BaseQuickAdapter adapter, int position) {
         HistoryData historyData = (HistoryData) adapter.getData().get(position);
         mPresenter.addHistoryData(historyData.getData());
@@ -241,24 +287,6 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchPresenter> im
     private void setItemBackground(TextView tv) {
         tv.setBackgroundColor(CommonUtils.randomTagColor());
         tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-    }
-
-    private void initCircleAnimation() {
-        mCircularRevealAnim = new CircularRevealAnim();
-        mCircularRevealAnim.setAnimListener(this);
-        mSearchEdit.getViewTreeObserver().addOnPreDrawListener(this);
-    }
-
-    private void initDialog() {
-        Window window = getDialog().getWindow();
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        //DialogSearch的宽
-        int width = (int) (metrics.widthPixels * 0.98);
-        assert window != null;
-        window.setLayout(width, WindowManager.LayoutParams.MATCH_PARENT);
-        window.setGravity(Gravity.TOP);
-        //取消过渡动画 , 使DialogSearch的出现更加平滑
-        window.setWindowAnimations(R.style.DialogEmptyAnimation);
     }
 
     public void backEvent() {

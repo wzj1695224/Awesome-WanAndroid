@@ -13,12 +13,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+
 /**
  * Abstract class that takes care of background threading the file log operation on Android.
  * implementing classes are free to directly perform I/O operations there.
- * @author quchao
  */
-
 public class DiskLogStrategy implements LogStrategy {
 
     private final Handler handler;

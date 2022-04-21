@@ -23,10 +23,6 @@ import json.chao.com.wanandroid.R;
 import json.chao.com.wanandroid.app.Constants;
 import json.chao.com.wanandroid.app.WanAndroidApp;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
 
 public class CommonUtils {
 
@@ -73,7 +69,7 @@ public class CommonUtils {
         LogHelper.e("showSnackMessage ：" + msg);
         //去掉虚拟按键
         activity.getWindow().getDecorView().setSystemUiVisibility(
-                //隐藏虚拟按键栏 | 防止点击屏幕时,隐藏虚拟按键栏又弹了出来
+                // 隐藏虚拟按键栏 | 防止点击屏幕时,隐藏虚拟按键栏又弹了出来
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE
         );
         final Snackbar snackbar = Snackbar.make(activity.getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT);

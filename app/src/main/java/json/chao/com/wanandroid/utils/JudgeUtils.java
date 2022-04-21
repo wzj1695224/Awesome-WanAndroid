@@ -10,10 +10,6 @@ import json.chao.com.wanandroid.ui.hierarchy.activity.KnowledgeHierarchyDetailAc
 import json.chao.com.wanandroid.ui.main.activity.ArticleDetailActivity;
 import json.chao.com.wanandroid.ui.main.activity.SearchListActivity;
 
-/**
- * @author quchao
- * @date 2018/2/24
- */
 
 public class JudgeUtils {
 

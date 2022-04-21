@@ -21,19 +21,17 @@ import json.chao.com.wanandroid.core.http.api.GeeksApis;
 
 /**
  * 对外隐藏进行网络请求的实现细节
- *
- * @author quchao
- * @date 2017/11/27
  */
-
 public class HttpHelperImpl implements HttpHelper {
 
-    private GeeksApis mGeeksApis;
+    private final GeeksApis mGeeksApis;
+
 
     @Inject
     HttpHelperImpl(GeeksApis geeksApis) {
         mGeeksApis = geeksApis;
     }
+
 
     @Override
     public Observable<BaseResponse<FeedArticleListData>> getFeedArticleList(int pageNum) {

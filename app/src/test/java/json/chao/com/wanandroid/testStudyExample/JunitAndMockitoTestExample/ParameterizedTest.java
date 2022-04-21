@@ -8,10 +8,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * @author quchao
- * @date 2018/6/5
- */
+
 @RunWith(Parameterized.class)
 public class ParameterizedTest {
 

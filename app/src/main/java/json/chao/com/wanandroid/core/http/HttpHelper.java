@@ -17,7 +17,6 @@ import json.chao.com.wanandroid.core.bean.wx.WxAuthor;
 import retrofit2.http.GET;
 
 
-
 public interface HttpHelper {
 
     /**
